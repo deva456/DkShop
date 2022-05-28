@@ -11,6 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { TempComponent } from './components/temp/temp.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { TempComponent } from './components/temp/temp.component';
     HomeComponent,
     ProductsComponent,
     ThankyouComponent,
-    TempComponent
+    TempComponent, 
+    HttpClientModule
   ],
   imports: [
     BrowserModule,
