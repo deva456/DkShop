@@ -10,6 +10,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
+import { TempComponent } from './components/temp/temp.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
     CheckoutComponent,
     HomeComponent,
     ProductsComponent,
-    ThankyouComponent
+    ThankyouComponent,
+    TempComponent
   ],
   imports: [
     BrowserModule,
