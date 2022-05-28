@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product.service";
-import {ProductModelServer, serverResponse} from "../../models/product.model";
+//import {ProductModelServer, serverResponse} from "../../models/product.model";
 import {CartService} from "../../services/cart.service";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.css']
 })
 
 
 export class HomeComponent implements OnInit {
-  products: ProductModelServer[] = [];
+ // products: ProductModelServer[] = [];
 
   constructor(private productService: ProductService,
               private cartService: CartService,
@@ -20,17 +20,17 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.getAllProducts(8).subscribe((prods: serverResponse ) => {
-      this.products = prods.products;
-      console.log(this.products);
-    });
+    // this.productService.getAllProducts(8).subscribe((prods: serverResponse ) => {
+    //   this.products = prods.products;
+    //   console.log(this.products);
+    // });
   }
 
-  AddProduct(id: Number) {
-    this.cartService.AddProductToCart(id);
-  }
+  // AddProduct(id: Number) {
+  //   this.cartService.AddProductToCart(id);
+  // }
 
-  selectProduct(id: Number) {
-    this.router.navigate(['/product', id]).then();
-  }
+  // selectProduct(id: Number) {
+  //   this.router.navigate(['/product', id]).then();
+  // }
 }
