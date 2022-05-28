@@ -20,18 +20,18 @@ export class HomeComponent implements OnInit {
              private router:Router) {
   }
 
-  //ngOnInit() {
-   // this.productService.getAllProducts(8).subscribe((prods: serverResponse ) => {
-     // this.products = prods.products;
-     // console.log(this.products);
-   // });
-  //}
+  ngOnInit(): void {
+    this.productService.getAllProducts(8).subscribe((prods: serverResponse ) => {
+      this.products = prods.products;
+      console.log(this.products);
+   });
+  }
 
-  //AddProduct(id: Number) {
-   // this.cartService.AddProductToCart(id);
-  //}
+  AddProduct(id: Number) {
+    this.cartService.AddProductToCart(id);
+  }
 
-  //selectProduct(id: Number) {
-  //  this.router.navigate(['/product', id]).then();
- // }
-//}
+  selectProduct(id: Number) {
+    this.router.navigate(['/product', id]).then();
+  }
+}
