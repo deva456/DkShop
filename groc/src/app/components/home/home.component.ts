@@ -16,14 +16,14 @@ export class HomeComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private cartService: CartService,
-              private router:Router) {
+             private router:Router) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.productService.getAllProducts(8).subscribe((prods: serverResponse ) => {
       this.products = prods.products;
       console.log(this.products);
-    });
+   });
   }
 
   AddProduct(id: Number) {
