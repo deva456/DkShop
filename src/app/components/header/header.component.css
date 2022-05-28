@@ -1,0 +1,32 @@
+.header-top{
+  height: 3.75rem;
+  background-color: #0F1111;
+  font-size: 0.8rem;
+  display: flex;
+  color: white;
+  padding-right: 0.5rem;
+}
+
+.header-menu{
+  display: flex;
+}
+
+.header-menu>div{
+  margin: 1.33%;
+}
+
+.header-menu-logo{
+  object-fit: contain;
+  width: 15%;
+  margin: 12px 20px 0px 2px;
+}
+
+.header-menu-signin{
+  display: flex;
+  flex-direction: column;
+}
+
+.header-menu-top-item{
+color: lightgray;
+font-size-adjust: 10px;
+}
