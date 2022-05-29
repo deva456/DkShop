@@ -115,6 +115,7 @@ font-size: 13px;
   padding-left: 8px;
   font-size: 12px;
   padding-top: 5.5px;
+  border-bottom: 2px solid #febd69;
 }
 
 .header-bottom-list >a{
