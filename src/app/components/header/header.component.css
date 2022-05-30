@@ -12,6 +12,7 @@
 .header-menu{
   display: flex;
   padding: 9px 8px 8px 8px;
+  width: 100%;
 }
 
 
@@ -38,7 +39,7 @@ padding-right: 2rem;
   padding: 10px;
   border: none;
   width: 30rem;
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
   border-radius: 2px;
   border-color:#232f3e;
 }
@@ -51,13 +52,13 @@ padding-right: 2rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-right: 3rem;
+  /* margin-right: 3rem; */
 }
 
 .header-menu-cart{
   display: flex;
   margin-top: 10px;
-  margin-left: 8px;
+  /* margin-left: 8px; */
   height: 50px;
   justify-content: space-around;
 }
@@ -85,7 +86,7 @@ padding-right: 2rem;
 .header-menu-signin{
   display: flex;
   flex-direction: column;
-  padding-right: 2rem;
+  /* padding-right: 2rem; */
 }
 
 .header-menu-top-item{

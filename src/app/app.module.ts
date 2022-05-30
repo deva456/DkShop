@@ -10,7 +10,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
-
+import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BannerComponent } from './components/banner/banner.component';
@@ -36,7 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    NgbModule
+    NgbModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

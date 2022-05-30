@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BannerComponent } from './components/banner/banner.component';
+
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
@@ -10,9 +10,7 @@ const routes: Routes = [
   {
   path: '',component: HomeComponent
   },
-  {
-    path: 'banner',component: BannerComponent
-    },
+
 
   {
     path: 'cart', component:CartComponent
