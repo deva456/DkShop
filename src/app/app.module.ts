@@ -13,7 +13,8 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { BannerComponent } from './components/banner/banner.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     ProductsComponent,
     ThankyouComponent,
+    BannerComponent
+
 
    // HttpClientModule
   ],
@@ -33,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
