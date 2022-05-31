@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LaptopsComponent } from './components/laptops/laptops.component';
 import { MobilesComponent } from './components/mobiles/mobiles.component';
 import { WatchComponent } from './components/watch/watch.component';
+import { GirlsclothsComponent } from './components/girlscloths/girlscloths.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { WatchComponent } from './components/watch/watch.component';
     BannerComponent,
     LaptopsComponent,
     MobilesComponent,
-    WatchComponent
+    WatchComponent,
+    GirlsclothsComponent
 
 
    // HttpClientModule
