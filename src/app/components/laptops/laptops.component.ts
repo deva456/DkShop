@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaptopsComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
