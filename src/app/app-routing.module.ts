@@ -4,14 +4,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
+import { LaptopsComponent } from './components/laptops/laptops.component';
+import { MobilesComponent } from './components/mobiles/mobiles.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
+import { WatchComponent } from './components/watch/watch.component';
 const routes: Routes = [
   {
   path: '',component: HomeComponent
   },
 
+  {
+    path:'laptops', component:LaptopsComponent
+  },
 
+  {
+    path:'mobiles', component:MobilesComponent
+  },
+  {
+    path:'watches', component:WatchComponent
+  },
   {
     path: 'cart', component:CartComponent
   },

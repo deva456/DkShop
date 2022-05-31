@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BannerComponent } from './components/banner/banner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LaptopsComponent } from './components/laptops/laptops.component';
+import { MobilesComponent } from './components/mobiles/mobiles.component';
+import { WatchComponent } from './components/watch/watch.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     ProductsComponent,
     ThankyouComponent,
-    BannerComponent
+    BannerComponent,
+    LaptopsComponent,
+    MobilesComponent,
+    WatchComponent
 
 
    // HttpClientModule
