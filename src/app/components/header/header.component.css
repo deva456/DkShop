@@ -117,11 +117,13 @@ font-size: 13px;
   font-size: 12px;
   padding-top: 5.5px;
   border-bottom: 2px solid #febd69;
+
 }
 
 .header-bottom-list >a{
   color: white;
-
+display: inline;
+padding-right: 20px;
   font-size: 16px;
   font-weight: 500;
   padding-left: 70px;

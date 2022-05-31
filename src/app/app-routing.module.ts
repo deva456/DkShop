@@ -22,7 +22,7 @@ const routes: Routes = [
     path:'mobiles', component:MobilesComponent
   },
   {
-    path:'watches', component:WatchComponent
+    path:'watch', component:WatchComponent
   },
   {
     path: 'cart', component:CartComponent
