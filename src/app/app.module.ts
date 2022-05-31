@@ -19,6 +19,7 @@ import { LaptopsComponent } from './components/laptops/laptops.component';
 import { MobilesComponent } from './components/mobiles/mobiles.component';
 import { WatchComponent } from './components/watch/watch.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GirlsclothsComponent } from './components/girlscloths/girlscloths.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     LaptopsComponent,
     MobilesComponent,
     WatchComponent,
+    GirlsclothsComponent,
 //HttpClientModule
 
   ],

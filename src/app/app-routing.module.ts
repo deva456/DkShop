@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { GirlsclothsComponent } from './components/girlscloths/girlscloths.component';
 import { HomeComponent } from './components/home/home.component';
 import { LaptopsComponent } from './components/laptops/laptops.component';
 import { MobilesComponent } from './components/mobiles/mobiles.component';
@@ -14,6 +15,9 @@ const routes: Routes = [
   path: '',component: HomeComponent
   },
 
+  {
+    path:'girlscloths',component: GirlsclothsComponent
+  },
   {
     path:'laptops', component:LaptopsComponent
   },
