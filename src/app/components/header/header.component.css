@@ -89,6 +89,14 @@ padding-right: 2rem;
   /* padding-right: 2rem; */
 }
 
+.header-menu-signin a{
+  text-decoration: none;
+  word-spacing: 1.5px;
+
+}
+
+
+
 .header-menu-top-item{
 color: lightgray;
 font-size: 13px;
@@ -128,4 +136,5 @@ padding-right: 20px;
   font-weight: 500;
   padding-left: 70px;
   text-decoration: none;
+
 }

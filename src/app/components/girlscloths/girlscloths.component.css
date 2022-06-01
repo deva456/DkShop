@@ -1,3 +1,18 @@
+.banner{
+  background-image: url(https://i.pinimg.com/originals/3b/a6/79/3ba679fa46d14c310ee8008891ea5754.jpg
+  );
+background-size: cover;
+padding-top: 27%;
+margin-bottom: 10px;
+}
+
+
+h2{
+  color: white;
+  text-align: center;
+
+  }
+
 
 .products{
   display: flex;
@@ -17,7 +32,7 @@ min-height: 350px;
 width: 250px;
 align-items: center;
 margin: 15px;
-
+border-radius: 10px;
 }
 
 .product > mat-card > button{
@@ -36,5 +51,5 @@ margin-bottom: 10px;
 }
 
 .product:hover{
-  background-color: rgba(245, 243, 240, 0.886);
+  background-color: rgba(230, 226, 220, 0.886);
 }
