@@ -18,9 +18,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LaptopsComponent } from './components/laptops/laptops.component';
 import { MobilesComponent } from './components/mobiles/mobiles.component';
 import { WatchComponent } from './components/watch/watch.component';
-import { HttpClientModule } from '@angular/common/http';
+
 import { GirlsclothsComponent } from './components/girlscloths/girlscloths.component';
 import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { LoginComponent } from './components/login/login.component';
     WatchComponent,
     GirlsclothsComponent,
     LoginComponent,
-//HttpClientModule
+// HttpClientModule
 
   ],
   imports: [

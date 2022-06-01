@@ -63,6 +63,12 @@ padding-right: 2rem;
   justify-content: space-around;
 }
 
+
+.header-menu-cart> mat-icon>a{
+  text-decoration: none;
+  color: white;
+}
+
 .header-menu>div{
   margin: 8px;
 }
