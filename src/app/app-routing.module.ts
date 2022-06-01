@@ -16,7 +16,11 @@ const routes: Routes = [
   },
 
   {
+<<<<<<< HEAD
     path:'girlscloths', component:GirlsclothsComponent
+=======
+    path:'girlscloths',component: GirlsclothsComponent
+>>>>>>> 93968a3b6ec08ae3357df670261e984e4f69610e
   },
   {
     path:'laptops', component:LaptopsComponent
@@ -26,7 +30,7 @@ const routes: Routes = [
     path:'mobiles', component:MobilesComponent
   },
   {
-    path:'watches', component:WatchComponent
+    path:'watch', component:WatchComponent
   },
   {
     path: 'cart', component:CartComponent

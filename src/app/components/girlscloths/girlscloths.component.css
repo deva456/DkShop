@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 93968a3b6ec08ae3357df670261e984e4f69610e
 .products{
   display: flex;
   flex-wrap: wrap;
@@ -6,6 +10,10 @@
 .product > mat-card > img{
 object-fit: contain;
 height: 200px;
+<<<<<<< HEAD
+=======
+margin-bottom: 10px;
+>>>>>>> 93968a3b6ec08ae3357df670261e984e4f69610e
 }
 
 .product > mat-card{
@@ -15,6 +23,10 @@ min-height: 350px;
 width: 250px;
 align-items: center;
 margin: 15px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 93968a3b6ec08ae3357df670261e984e4f69610e
 }
 
 .product > mat-card > button{
@@ -26,3 +38,15 @@ margin: 15px;
   border-radius: 3px;
   border-color: #a88134 #9c7e31 #846a29;
 }
+<<<<<<< HEAD
+=======
+
+.product:hover> mat-card > img{
+height: 214px;
+margin-bottom: 10px;
+}
+
+.product:hover{
+  background-color: rgba(245, 243, 240, 0.886);
+}
+>>>>>>> 93968a3b6ec08ae3357df670261e984e4f69610e
