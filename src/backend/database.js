@@ -10,6 +10,6 @@ port: 5432,
 
 password: "root",
 
-database: "movie_data"
+database: "amshop"
 
 })

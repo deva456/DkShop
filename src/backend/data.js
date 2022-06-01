@@ -9,7 +9,7 @@ db.connect(err => {
 })
 
 app.get('/user', (req, res) => {
-  let qr = `Select * from "actors"`
+  let qr = `Select * from "products"`
   db
       .query({
           rowMode: "array",
