@@ -1,7 +1,7 @@
 <div class="checkout_products" *ngIf="product.length !=0">
-  <p class="price">Price</p>
+
   <div class="checkout_product" *ngFor="let p of product, let i= index">
-   <h2> {{i+1}}.</h2>
+
      <img src="{{p.image}}" alt="" class="checkout_product_img">
      <div class="checkout_product_info">
 
@@ -19,29 +19,19 @@
         </div>
         <div class="checkout_options">
           <div class="checkout_dropdown">
-
-
             </div>
             <a (click)="removeItem(p)"> Delete</a>
-
-
-
         </div>
-
      </div>
-     <div class="checkout_products_price">
-         <p> <strong>&#8377;{{p.price}}</strong> </p>
-     </div>
-
   </div>
-  <div class="checkout_products_subtotal">
-      <p>Subtotal : {{grandTotal|currency:'INR'}}
 
-
-  </div>
+  <div class="class-right-subtotal">
+  <app-cart></app-cart>
+</div>
 </div>
 
 <div class="checkout_empty" *ngIf="product.length == 0">
   <h2>Your shopping basket is empty</h2>
   <p>You have no items in your basket</p>
+  <button routerLink="/">shop now</button>
 </div>

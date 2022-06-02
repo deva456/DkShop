@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IProduct } from '../iproduct';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
 
 
-  public cartItemList:any=[]
+  public cartItemList:IProduct[]=[]
   public productList=new BehaviorSubject<any>([]);
 
   constructor() { }
@@ -33,12 +34,20 @@ export class CartService {
     })
     return grandTotal;
   }
-  removeCartItem(product: any){
-    this.cartItemList.map((a:any, index:any)=>{
-      if(product.id===a.id){
-        this.cartItemList.splice(index,1);
+  removeCartItem(product: IProduct){
+      for(let i=0;i<this.cartItemList.length;i++){
+
+      if(this.cartItemList[i].product_id === product.product_id){
+
+      this.cartItemList.splice(i,1);
+
       }
-    })
+
+    }
+
+    this.productList.next(this.cartItemList);
+
+
   }
   removeAllCart(){
     this.cartItemList=[]

@@ -61,7 +61,7 @@ margin-left: 30px;
 padding-left: px;
 }
 
-.product > mat-card > button{
+.product button{
   margin-top: 20px;
   background-color: #f0c14b;
   opacity: 99%;
@@ -71,11 +71,13 @@ padding-left: px;
   border-color: #a88134 #9c7e31 #846a29;
 }
 
-/* .product:hover> mat-card > img{
-height: 214px;
+
+
+/* .product:hover> mat-card {
+height: 180px;
 margin-bottom: 10px;
-}
+} */
 
 .product:hover{
   background-color: rgba(245, 243, 240, 0.886);
-} */
+}

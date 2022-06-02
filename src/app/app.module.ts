@@ -27,6 +27,7 @@ import { NgModel } from '@angular/forms';
 import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
 import { MensclothsComponent } from './components/menscloths/menscloths.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

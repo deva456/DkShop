@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { IProduct } from 'src/app/iproduct';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -7,10 +8,11 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
 
+
   public product:any=[];
   public grandTotal!:number;
-
-  constructor(private cartService: CartService) { }
+  public totalItem: number=0;
+  constructor(public cartService: CartService) { }
 
   ngOnInit(): void {
 
@@ -19,15 +21,30 @@ export class CartComponent implements OnInit {
       this.product=res;
       this.grandTotal=this.cartService.getTotalPrice();
     })
+
+    this.cartService.getProducts()
+    .subscribe(res=>{
+    this.totalItem = res.length;
+  })
   }
 
-  removeItem(item:any){
-this.cartService.removeCartItem(item)
-  }
+  removeItem(item:IProduct){
+    this.cartService.removeCartItem(item)
+      }
 
-  emptycart(){
-    this.cartService.removeAllCart();
-  }
+      calculatePrice(){
+
+        this.grandTotal=this.cartService.getTotalPrice();
+
+      }
+
+      emptycart(){
+        this.cartService.removeAllCart();
+      }
+
+
+
+
 
 }
 
