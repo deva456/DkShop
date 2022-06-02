@@ -65,25 +65,13 @@ app.get('/user', (req, res) => {
 
           }
 
-          // console.log(result);
-
-          // if(result.length > 0)
-
-          // {
-
-          // console.log(result.rows[0].Name);
-
           res.send(
 
-              // message: 'all user data',
-
-              // data: result.rows
 
               data1
 
           );
 
-          // }
 
       })
 
