@@ -24,7 +24,19 @@
   padding: 0px 5px;
 
 }
+.logo-header{
+  color: #febd69;
+  padding-top: 10px;
+  padding-right: 10px;
+font-size: 33px;
 
+}
+
+.logo-header:hover{
+  font-weight: 600;
+  color: rgba(243, 237, 232, 0.831);
+
+}
 
 
 .header-menu-icon > mat-icon{
@@ -54,6 +66,7 @@ padding-right: 2rem;
   align-items: center;
   /* margin-right: 3rem; */
 }
+
 
 .header-menu-searchbar-icon:hover{
   background-color: rgba(249, 142, 42, 0.966);
