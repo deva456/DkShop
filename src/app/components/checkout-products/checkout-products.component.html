@@ -1,7 +1,7 @@
 <div class="checkout_products" *ngIf="product.length !=0">
   <p class="price">Price</p>
   <div class="checkout_product" *ngFor="let p of product, let i= index">
-    {{i+1}}
+   <h2> {{i+1}}.</h2>
      <img src="{{p.image}}" alt="" class="checkout_product_img">
      <div class="checkout_product_info">
 
@@ -23,14 +23,14 @@
 
             </div>
             <a (click)="removeItem(p)"> Delete</a>
-            <a href="#">Save for later</a>
-            <a href="#">Compare with similar items</a>
+
+
 
         </div>
 
      </div>
      <div class="checkout_products_price">
-         <p> <strong>${{p.price}}</strong> </p>
+         <p> <strong>&#8377;{{p.price}}</strong> </p>
      </div>
 
   </div>
