@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +22,8 @@ import { WatchComponent } from './components/watch/watch.component';
 
 import { GirlsclothsComponent } from './components/girlscloths/girlscloths.component';
 import { LoginComponent } from './components/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+
+import { NgModel } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { HttpClientModule } from '@angular/common/http';
     WatchComponent,
     GirlsclothsComponent,
     LoginComponent,
-// HttpClientModule
+
+
+
 
   ],
   imports: [
@@ -48,7 +52,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatIconModule,
     NgbModule,
-    MatCardModule
+    MatCardModule,
+
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

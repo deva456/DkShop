@@ -1,8 +1,8 @@
-<div class="banner">
+ <div class="banner">
   <h2 class="banner-title1">Expect the unexpected.</h2>
  <h2 class="banner-title2">Experience the lifestyle.</h2>
  </div>
-
+<!--
 <div class="products">
   <div class="product">
     <mat-card>
@@ -60,7 +60,7 @@
       <p><strong>Pantaloon</strong></p>
       <p>Striped Slim Fit Shirt with Patch Pocket</p>
       <p class="money">&#8377; <strong>600.00</strong></p>
-      <button routerLink="/cart" class="Add-to-cart">Add to cart</button>
+      <button routerLink="/cart" >Add to cart</button>
     </mat-card>
   </div>
 
@@ -83,4 +83,34 @@
       <button routerLink="/cart" class="Add-to-cart">Add to cart</button>
     </mat-card>
   </div>
+</div> -->
+
+
+<div class="products" >
+  <div class="product" *ngFor="let dt of result">
+    <mat-card>
+      <img src="{{dt.image}}" class="product-img"/>
+      <p><strong>{{dt.title}}</strong></p>
+      <p>{{dt.description}}</p>
+      <p class="money">&#8377; <strong>{{dt.price}}</strong></p>
+      <button routerLink="/cart" class="Add-to-cart">Add to cart</button>
+    </mat-card>
+  </div>
 </div>
+
+
+
+<!--
+<div class="col-lg-3 mt-3" *ngFor="let dt of result">
+
+  <div class="MenuBox" >
+
+    <img src="{{dt.image}}"/>
+
+    <h1>{{dt.title}}</h1>
+
+    <p>{{dt.price}}</p>
+
+    <a  routerLink="cart" class="btn btn-primary"  >Add to Cart</a>
+
+  </div> -->
