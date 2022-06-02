@@ -25,6 +25,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { NgModel } from '@angular/forms';
 import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
+import { MensclothsComponent } from './components/menscloths/menscloths.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CheckoutProductsComponent } from './components/checkout-products/checko
     WatchComponent,
     GirlsclothsComponent,
     LoginComponent,
-    CheckoutProductsComponent
+    CheckoutProductsComponent,
+    MensclothsComponent
 
 
 
