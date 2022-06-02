@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IProduct } from 'src/app/iproduct';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  selector: 'app-checkout-products',
+  templateUrl: './checkout-products.component.html',
+  styleUrls: ['./checkout-products.component.css']
 })
-export class CheckoutComponent implements OnInit {
-
+export class CheckoutProductsComponent implements OnInit {
 
   public product:any=[];
   public grandTotal!:number;
@@ -23,8 +23,14 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
-  removeItem(item:any){
+  removeItem(item:IProduct){
 this.cartService.removeCartItem(item)
+  }
+
+  calculatePrice(){
+
+    this.grandTotal=this.cartService.getTotalPrice();
+
   }
 
   emptycart(){
@@ -32,12 +38,3 @@ this.cartService.removeCartItem(item)
   }
 
 }
-
-
-
-
-
-
-
-
-

@@ -87,14 +87,15 @@
 
 
 <div class="products" >
-  <div class="product" *ngFor="let dt of result">
-    <mat-card>
+  <div class="product" >
+    <mat-card *ngFor="let dt of result">
       <img src="{{dt.image}}" class="product-img"/>
       <p><strong>{{dt.title}}</strong></p>
       <p>{{dt.description}}</p>
-      <p class="money">&#8377; <strong>{{dt.price}}</strong></p>
-      <button routerLink="/cart" class="Add-to-cart">Add to cart</button>
+      <p class="money"> <strong>{{dt.price | currency:'INR'}}</strong></p>
+      <a><button class="Add-to-cart"  (click)=addtocart(dt) > Add to cart </button></a>
     </mat-card>
+
   </div>
 </div>
 

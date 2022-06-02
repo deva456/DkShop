@@ -24,6 +24,7 @@ import { GirlsclothsComponent } from './components/girlscloths/girlscloths.compo
 import { LoginComponent } from './components/login/login.component';
 
 import { NgModel } from '@angular/forms';
+import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,8 @@ import { NgModel } from '@angular/forms';
     WatchComponent,
     GirlsclothsComponent,
     LoginComponent,
+    CheckoutProductsComponent
+
 
 
 

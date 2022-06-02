@@ -42,20 +42,23 @@ padding-bottom: 10px;
 
 }
 .product > mat-card > img{
-object-fit: contain;
-height: 200px;
+/* object-fit: contain; */
+height: 155px;
 margin-bottom: 10px;
 }
 
 .product > mat-card{
-display: flex;
-flex-direction: column;
-min-height: 350px;
-width: 250px;
+display: inline-block;
+
+/* flex-direction: column; */
+min-height: 300px;
+width: 235px;
 align-items: center;
+text-align: center;
 margin: 15px;
 border-radius: 10px;
-
+margin-left: 30px;
+padding-left: px;
 }
 
 .product > mat-card > button{
@@ -68,11 +71,11 @@ border-radius: 10px;
   border-color: #a88134 #9c7e31 #846a29;
 }
 
-.product:hover> mat-card > img{
+/* .product:hover> mat-card > img{
 height: 214px;
 margin-bottom: 10px;
 }
 
 .product:hover{
   background-color: rgba(245, 243, 240, 0.886);
-}
+} */
