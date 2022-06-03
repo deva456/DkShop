@@ -30,14 +30,13 @@ searchkey:string='';
         this.cartService.search.subscribe((val:any)=>{
           this.searchkey=val;
 
-
         })
       }
 
 
       addtocart(dt:any){
         this.cartService.addtoCart(dt);
-        this.toast.success('message','item added to cart');
+        alert('item added to cart successfully')
       }
 
 
