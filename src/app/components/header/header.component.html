@@ -12,7 +12,7 @@
 <span class="header-menu-left-line-two"><strong>India</strong></span>
      </div>
      <div class="header-menu-searchbar">
-       <input type="text" name="search" placeholder="search products here!"class="header-menu-input">
+       <input type="text" name="search" [(ngModel)]="searchterm" (keyup)="search($event)" placeholder="search products here!"class="header-menu-input">
        <div class="header-menu-searchbar-icon">
 <mat-icon><a href=""> search</a></mat-icon>
          </div>
@@ -27,7 +27,7 @@
         <span class="header-menu-bottom-item">& orders </span>
 
       </div>
-      <div routerLink="/checkout-products" routerLinkActive="active" class="header-menu-cart">
+      <div routerLink="/checkout-products" routerLinkActive="active-link" class="header-menu-cart">
         <mat-icon><a  class="cartlogo">shopping_cart</a></mat-icon>
         <p class="header_cart_number"></p>
         <p class="header-cart-number">{{totalItem}}</p>

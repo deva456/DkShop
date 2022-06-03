@@ -23,9 +23,13 @@ import { WatchComponent } from './components/watch/watch.component';
 import { GirlsclothsComponent } from './components/girlscloths/girlscloths.component';
 import { LoginComponent } from './components/login/login.component';
 
-import { NgModel } from '@angular/forms';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
 import { MensclothsComponent } from './components/menscloths/menscloths.component';
+
+import { ToastrModule } from 'ngx-toastr';
+import { FilterPipe } from './shared/filter.pipe';
+
 
 
 @NgModule({
@@ -45,8 +49,9 @@ import { MensclothsComponent } from './components/menscloths/menscloths.componen
     GirlsclothsComponent,
     LoginComponent,
     CheckoutProductsComponent,
-    MensclothsComponent
+    MensclothsComponent,
 
+FilterPipe
 
 
 
@@ -59,8 +64,15 @@ import { MensclothsComponent } from './components/menscloths/menscloths.componen
     MatIconModule,
     NgbModule,
     MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
 
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut:1000,
+      progressAnimation: 'increasing',
+      progressBar:true
+        })
   ],
   providers: [],
   bootstrap: [AppComponent]

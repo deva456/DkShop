@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-laptops',
@@ -8,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class LaptopsComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private toast:ToastrService) { }
 
   ngOnInit(): void {
 
+  }
+  added(){
+    this.toast.success("item added to cart");
   }
 
 }

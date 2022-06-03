@@ -10,6 +10,7 @@ export class CartService {
 
   public cartItemList:IProduct[]=[]
   public productList=new BehaviorSubject<any>([]);
+  public search =new BehaviorSubject<any>("");
 
   constructor() { }
 

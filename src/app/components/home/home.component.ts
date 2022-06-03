@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/iproduct';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,8 +10,10 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class HomeComponent implements OnInit {
 
+searchkey:string='';
+
   result:IProduct[]=[];
-  constructor(private order:ProductService, private cartService: CartService) { }
+  constructor(private order:ProductService, private cartService: CartService, private toast:ToastrService) { }
 
   ngOnInit(): void {
     this.order.getData().subscribe((data:IProduct[]) =>{
@@ -23,13 +26,19 @@ export class HomeComponent implements OnInit {
           })
 
         });
+        // searchkey
+        this.cartService.search.subscribe((val:any)=>{
+          this.searchkey=val;
+
+
+        })
       }
 
 
       addtocart(dt:any){
         this.cartService.addtoCart(dt);
+        this.toast.success('message','item added to cart');
       }
-
 
 
     }
