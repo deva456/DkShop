@@ -10,56 +10,6 @@
   </div>
 </nav>
 
-<!--
-
- <div class="header">
-  <nav class="header-top">
-  <div class="header-menu">
-    <div class="header-menu-icon">
-    <mat-icon>menu</mat-icon>
-    </div>
-    <img src="" class="header-menu-logo" alt="amazon logo">
-    <h2 class="logo-header">amshop</h2>
-    <div class="header-menu-location">
-<span class="header-menu-left-line-one">Delivery to</span>
-
-<span class="header-menu-left-line-two"><strong>India</strong></span>
-    </div>
-    <div class="header-menu-searchbar">
-      <input type="text" name="search" [(ngModel)]="searchterm" (keyup)="search($event)" placeholder="search products here!"class="header-menu-input">
-      <div class="header-menu-searchbar-icon">
-<mat-icon><a href=""> search</a></mat-icon>
-        </div>
-       </div>
-      <div class="header-menu-signin">
-       <a href=""><span routerLink="/login" class="header-menu-top-item">Hello, <strong style="letter-spacing: 1px; color: rgba(255, 162, 0, 0.806);"  > Viren</strong></span></a>
-       <span class="header-menu-bottom-item">Account & lists </span>
-
-      </div>
-      <div class="header-menu-signin">
-       <span class="header-menu-top-item">Returns </span>
-       <span class="header-menu-bottom-item">& orders </span>
-
-     </div>
-     <div routerLink="/checkout-products" routerLinkActive="active-link" class="header-menu-cart">
-       <mat-icon><a  class="cartlogo">shopping_cart</a></mat-icon>
-       <p class="header_cart_number"></p>
-       <p class="header-cart-number">{{totalItem}}</p>
-     </div>
-   </div>
-  </nav>
-  <nav class="header-bottom">
-    <div class="header-bottom-list">
-      <a (click)="filter('')">All Categories</a>
-       <a routerLink="/menscloths">Shirts for Mens</a>
-      <a (click)="filter('Shirts for Mens')">Shirts for Mens</a>
-      <a (click)="filter('Tops for Womens')">Tops for Womens</a>
-      <a (click)="filter('Laptops')">Laptops</a>
-      <a (click)="filter('SmartPhones')">SmartPhones</a>
-      <a (click)="filter('Watches')">Watches</a>
-    </div>
-  </nav>
-</div> -->
 
 <div class="banner">
   <h2 class="banner-title1">Expect the unexpected.</h2>
@@ -68,7 +18,7 @@
 
 <div class="products" >
   <div class="product" >
-    <mat-card *ngFor="let dt of filtercategory | filter:searchkey:'title'">
+    <mat-card *ngFor="let dt of filtercategory | filter:searchkey:'tags'">
       <img src="{{dt.image}}" class="product-img"/>
       <p><strong>{{dt.title}}</strong></p>
       <p>{{dt.description}}</p>

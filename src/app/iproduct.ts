@@ -24,6 +24,9 @@
     categorie_id:number;
 
     category: string;
+
+    tags : string;
+
 }
 
 
