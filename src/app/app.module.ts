@@ -9,22 +9,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
-//import { ProductsComponent } from './components/products/products.component';
-//import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { MatCardModule } from '@angular/material/card';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { BannerComponent } from './components/banner/banner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { LaptopsComponent } from './components/laptops/laptops.component';
-// import { MobilesComponent } from './components/mobiles/mobiles.component';
-// import { WatchComponent } from './components/watch/watch.component';
-
-// import { GirlsclothsComponent } from './components/girlscloths/girlscloths.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
-// import { MensclothsComponent } from './components/menscloths/menscloths.component';
+
 
 import { ToastrModule } from 'ngx-toastr';
 import { FilterPipe } from './shared/filter.pipe';
@@ -39,22 +30,9 @@ import { FilterPipe } from './shared/filter.pipe';
     CartComponent,
     CheckoutComponent,
     HomeComponent,
-   // ProductsComponent,
-   // ThankyouComponent,
-    // BannerComponent,
-    // LaptopsComponent,
-    // MobilesComponent,
-    // WatchComponent,
-    // GirlsclothsComponent,
     LoginComponent,
     CheckoutProductsComponent,
-    // MensclothsComponent,
-
 FilterPipe
-
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -63,7 +41,7 @@ FilterPipe
     MatIconModule,
     NgbModule,
     MatCardModule,
- 
+
     FormsModule,
     ReactiveFormsModule,
 

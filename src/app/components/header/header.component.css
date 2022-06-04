@@ -41,9 +41,10 @@ font-size: 33px;
 
 .header-menu-icon > mat-icon{
 
-font-size: 45px;
+font-size: 40px;
 align-items: center;
 padding-right: 2rem;
+color: #ede5da;
 }
 
 .header-menu-input{

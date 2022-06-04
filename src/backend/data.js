@@ -57,7 +57,9 @@ app.get('/user', (req, res) => {
 
                   categorie_id: result.rows[i].categorie_id,
 
-                  category : result.rows[i].category
+                  category : result.rows[i].category,
+
+                  tags: result.rows[i].tags
 
               });
 
