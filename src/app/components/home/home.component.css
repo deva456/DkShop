@@ -242,7 +242,7 @@ margin-left: 30px;
 padding-left: px;
 }
 
-.product button{
+.product .Add-to-cart{
   margin-top: 20px;
   background-color: #f0c14b;
   opacity: 99%;
@@ -255,4 +255,26 @@ padding-left: px;
 
 .product:hover{
   background-color: rgba(245, 243, 240, 0.886);
+}
+
+.btn{
+background-color:#f0c14b;
+border: none;
+margin: 0px 10px;
+font-size: 18px;
+}
+
+#plus{
+padding-top: 3px;
+border-radius: 3px;
+}
+
+#minus{
+  padding-top: 3.3px;
+  border-radius: 3px;
+  padding-right: 6px;
+
+}
+.product>mat-card:hover{
+background-color: #ad8a4529;
 }

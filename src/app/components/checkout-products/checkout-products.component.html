@@ -22,12 +22,23 @@
             </div>
             <a (click)="removeItem(p)"> Delete</a>
         </div>
+
      </div>
+     <div class="qantity-container">
+      <h2>quantity</h2>
+      <div class="quantity-button">
+
+        <button class="btn" id="plus" type="button" (click)="inc(p)"><i class="fa fa-plus"></i></button>
+        <span>{{p.quantity}}</span>
+        <button class="btn" id="minus" type="button" (click)="dec(p)"><i class="fa fa-minus"></i></button>
+       </div>
+    </div>
   </div>
 
   <div class="class-right-subtotal">
   <app-cart></app-cart>
 </div>
+
 </div>
 
 <div class="checkout_empty" *ngIf="product.length == 0">

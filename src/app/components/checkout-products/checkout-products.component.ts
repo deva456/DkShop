@@ -37,4 +37,20 @@ this.cartService.removeCartItem(item)
     this.cartService.removeAllCart();
   }
 
+  inc(product:any){
+    if(product.quantity!=10){
+    product.quantity+=1;
+    this.cartService.addtoCart(product);
+    }
+  }
+
+  dec(product:any){
+    if(product.quantity!=1){
+    product.quantity-=1;
+    this.cartService.removeCartItem(product);
+    }
+  }
+
+
+
 }

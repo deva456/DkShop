@@ -3,6 +3,7 @@ import { IProduct } from 'src/app/iproduct';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,6 +19,7 @@ public totalItem: number=0;
 
   result:IProduct[]=[];
   constructor(private order:ProductService, private cartService: CartService, private toast:ToastrService) { }
+
 
   ngOnInit(): void {
     this.order.getData().subscribe((data:IProduct[]) =>{
@@ -80,7 +82,24 @@ public totalItem: number=0;
         this.searchterm=(event.target as HTMLInputElement).value;
         this.cartService.search.next(this.searchterm);
       }
+
+inc(result:any){
+if(result.quantity!=10){
+ result.quantity+=1;
+ this.cartService.addtoCart(result);
+}
+}
+
+dec(result:any){
+  if(result.quantity!=1){
+    result.quantity-=1;
+    this.cartService.addtoCart(result);
+  }
+}
+
+
     }
+
 
 
 

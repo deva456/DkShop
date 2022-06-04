@@ -102,3 +102,40 @@ font-size: 30px;
 .checkout_empty button:hover{
  background-color: rgb(237, 163, 78);
 }
+
+.qantity-container{
+  text-align: center;
+}
+
+.quantity-button{
+  padding-right: 260px;
+  display: flex;
+  padding-top: 7%;
+
+
+}
+
+.qantity-container h2{
+  font-size: 25px;
+
+}
+
+.btn{
+  background-color:#f0c14b;
+  border: none;
+  margin: 0px 20px;
+  font-size: 18px;
+
+  }
+
+  #plus{
+  padding-top: 3px;
+  border-radius: 3px;
+  }
+
+  #minus{
+    padding-top: 3.3px;
+    border-radius: 3px;
+    padding-right: 6px;
+
+  }
