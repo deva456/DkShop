@@ -1,11 +1,8 @@
 var db = require('./database')
-const { ConnectableObserveble } = require ('rxjs');
 const express = require ('express');
 const app = express();
-const bodyparser = require('body-parser');
+// const bodyparser = require('body-parser');
 const cors = require('cors');
-
-
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', "*");
@@ -29,7 +26,6 @@ app.get('/user', (req, res) => {
 
       .query({
 
-          // rowMode: "array",
 
           text: qr
 
@@ -59,7 +55,9 @@ app.get('/user', (req, res) => {
 
                   quantity: result.rows[i].quantity,
 
-                  categorie_id: result.rows[i].categorie_id
+                  categorie_id: result.rows[i].categorie_id,
+
+                  category : result.rows[i].category
 
               });
 

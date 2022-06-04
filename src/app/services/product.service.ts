@@ -15,5 +15,6 @@ export class ProductService {
     let url="http://localhost:3000/user"
     return this.http.get<IProduct[]>(url);
 
+  }
 
-  }}
+  }

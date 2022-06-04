@@ -20,6 +20,8 @@
     short_desc: string;
 
     categorie_id:number;
+
+    category: string;
 }
 
 
