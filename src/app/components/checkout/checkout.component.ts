@@ -11,7 +11,7 @@ export class CheckoutComponent implements OnInit {
 
   public product:any=[];
   public grandTotal!:number;
-  
+  public totalItem: number=0;
  
 
   constructor(private cartService: CartService,
@@ -26,6 +26,11 @@ export class CheckoutComponent implements OnInit {
       this.product=res;
       this.grandTotal=this.cartService.getTotalPrice();
     })
+    this.cartService.getProducts()
+    .subscribe(res=>{
+    this.totalItem = res.length;
+  })
+
   }
 
   removeItem(item:any){

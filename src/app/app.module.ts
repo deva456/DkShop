@@ -19,6 +19,7 @@ import { CheckoutProductsComponent } from './components/checkout-products/checko
 
 import { ToastrModule } from 'ngx-toastr';
 import { FilterPipe } from './shared/filter.pipe';
+import { ThankyouComponent } from './components/thankyou/thankyou.component';
 
 
 
@@ -32,7 +33,9 @@ import { FilterPipe } from './shared/filter.pipe';
     HomeComponent,
     LoginComponent,
     CheckoutProductsComponent,
-FilterPipe
+    ThankyouComponent,
+FilterPipe,
+
   ],
   imports: [
     BrowserModule,
