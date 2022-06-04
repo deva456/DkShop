@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 import { GirlsclothsComponent } from './components/girlscloths/girlscloths.component';
 import { HomeComponent } from './components/home/home.component';
@@ -46,6 +47,9 @@ const routes: Routes = [
   },
   {
     path: 'checkout-products', component:CheckoutProductsComponent
+  },
+  {
+    path:'checkout', component:CheckoutComponent
   }
 ];
 

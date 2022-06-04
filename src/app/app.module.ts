@@ -22,7 +22,6 @@ import { WatchComponent } from './components/watch/watch.component';
 
 import { GirlsclothsComponent } from './components/girlscloths/girlscloths.component';
 import { LoginComponent } from './components/login/login.component';
-
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
 import { MensclothsComponent } from './components/menscloths/menscloths.component';
@@ -64,6 +63,7 @@ FilterPipe
     MatIconModule,
     NgbModule,
     MatCardModule,
+ 
     FormsModule,
     ReactiveFormsModule,
 
