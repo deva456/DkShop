@@ -1,7 +1,6 @@
 <nav class="header-bottom">
   <div class="header-bottom-list">
     <a (click)="filter('')">All Categories</a>
-    <!-- <a routerLink="/menscloths">Shirts for Mens</a> -->
     <a (click)="filter('Shirts for Mens')">Shirts for Mens</a>
     <a (click)="filter('Tops for Womens')">Tops for Womens</a>
     <a (click)="filter('Laptops')">Laptops</a>
@@ -18,7 +17,7 @@
 
 <div class="products" >
   <div class="product" >
-    <mat-card *ngFor="let dt of filtercategory | filter:searchkey:'tags'">
+    <mat-card *ngFor="let dt of filtercategory | filter:searchkey:'description'">
       <img src="{{dt.image}}" class="product-img"/>
       <p><strong>{{dt.title}}</strong></p>
       <p>{{dt.description}}</p>

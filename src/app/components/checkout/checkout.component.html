@@ -7,7 +7,7 @@
     <div class="col-12 col">
       <div class="info-bar">
         <p>
-          <i class="fa fa-info"></i> 
+          <i class="fa fa-info"></i>
           Returning customer? <a href="#">Click here to login</a>
         </p>
       </div>
@@ -36,7 +36,7 @@
     <div class="col-12 col">
       <div class="info-bar">
         <p>
-          <i class="fa fa-info"></i> 
+          <i class="fa fa-info"></i>
           Have a coupon? <a href="#">Click here to enter your code</a>
         </p>
       </div>
@@ -79,7 +79,7 @@
           <label for="province">Province</label>
           <select name="province" id="province" required>
             <option value="">Please select a province</option>
-            
+
             <option value="in">India</option>
             <option value="not-india">Not India</option>
           </select>
@@ -101,20 +101,20 @@
           <label for="address">Shipping Address</label>
           <input type="text" name="address" id="email" placeholder="Enter your delivery address">
         </div>
-        
-        
+
+
         <label for="notes" class="notes">Order Notes</label>
         <textarea name="notes" id="notes" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
       </div>
       <div class="col-5 col order">
         <h3 class="topborder"><span>Your Order</span></h3>
         <div class="row">
-          <h4 class="inline">Product</h4>
-          <h4 class="inline alignright">Total</h4>
+          <h4 class="inline">Product Total</h4>
+          <!-- <h4 class="inline alignright">Total</h4> -->
         </div>
         <div>
           <p class="prod-description inline"><div class="qty inline"><span class="smalltxt">x</span>{{totalItem}}</div>
-          
+
         </div>
         <div><h5>Cart Subtotal</h5>{{grandTotal|currency:'INR'}}</div>
         <div>
@@ -133,15 +133,15 @@
 
         <div><input type="radio" value="cheque" name="payment"><p>Cheque Payment</p></div>
         <div>
-          <input type="radio" value="paypal" name="payment"><p>Paypal</p>
+          <input type="radio" value="paypal" name="payment"><p>UPI ID:</p>
           <fieldset class="paymenttypes">
-           
+
           </fieldset>
           <a href="#" class="padleft"></a>
         </div>
-        
-        <button routerLink="/thankyou">Place Order</button>
-       
+
+        <button class="place-order" routerLink="/thankyou">Place Order</button>
+
       </div>
     </form>
   </div>

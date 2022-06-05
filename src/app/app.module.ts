@@ -34,7 +34,7 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
     LoginComponent,
     CheckoutProductsComponent,
     ThankyouComponent,
-FilterPipe,
+FilterPipe
 
   ],
   imports: [
