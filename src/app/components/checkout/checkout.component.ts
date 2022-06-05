@@ -31,7 +31,9 @@ export class CheckoutComponent implements OnInit {
     this.totalItem = res.length;
   })
 
-  }
+  
+
+}
 
   removeItem(item:any){
 this.cartService.removeCartItem(item)
