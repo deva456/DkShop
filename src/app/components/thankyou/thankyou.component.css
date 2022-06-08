@@ -1,7 +1,7 @@
-*{
+/* *{
     box-sizing:border-box;
-   
-  }
+
+  } */
   /* body{
   background: #ffffff;
   background: linear-gradient(to bottom, #ffffff 0%,#e1e8ed 100%);
@@ -40,13 +40,18 @@
   }
   .go-home{
     color:#fff;
-    background:#f7c230;
+    background:#ed9f2b;
     border:none;
+    font-weight: 800;
     padding:10px 50px;
     margin:30px 0;
     border-radius:30px;
     text-transform:capitalize;
-    box-shadow: 0 10px 16px 1px rgb(199, 145, 30);
+    box-shadow: 0 6px 16px 1px rgb(226, 157, 7);
+  }
+  .content{
+    padding-bottom: 70px;
+    padding-top: 40px;
   }
   .footer-like{
     margin-top: auto;
@@ -57,13 +62,13 @@
   .footer-like p{
     margin:0;
     padding:4px;
-    color:#5892FF;
+    color:#ffd058;
     font-family: 'Source Sans Pro', sans-serif;
     letter-spacing:1px;
   }
   .footer-like p a{
     text-decoration:none;
-    color:#5892FF;
+    color:#ffc758;
     font-weight:600;
   }
 

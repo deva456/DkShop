@@ -2,8 +2,7 @@
   export interface IProduct
 
 {
-    id: Number;
-    name: any;
+
 
     product_id: number;
 

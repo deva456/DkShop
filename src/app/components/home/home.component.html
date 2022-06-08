@@ -1,12 +1,12 @@
 
 <nav class="header-bottom">
   <div class="header-bottom-list">
-    <a (click)="filter('')">All Categories</a>
-    <a (click)="filter('Shirts for Mens')">Shirts for Mens</a>
-    <a (click)="filter('Tops for Womens')">Tops for Womens</a>
-    <a (click)="filter('Laptops')">Laptops</a>
-    <a (click)="filter('SmartPhones')">SmartPhones</a>
-    <a (click)="filter('Watches')">Watches</a>
+    <a (click)="filter('')" class="header-hover">Home</a>
+    <a (click)="filter('Shirts for Mens')" class="header-hover">Shirts for Mens</a>
+    <a (click)="filter('Tops for Womens')" class="header-hover">Tops for Womens</a>
+    <a (click)="filter('Laptops')" class="header-hover">Laptops</a>
+    <a (click)="filter('SmartPhones')" class="header-hover">SmartPhones</a>
+    <a (click)="filter('Watches')" class="header-hover">Watches</a>
   </div>
 </nav>
 
@@ -14,9 +14,9 @@
 <div class="banner">
   <h2 class="banner-title1">Expect the unexpected.</h2>
  <h2 class="banner-title2">Experience the lifestyle.</h2>
- </div>  
+ </div>
 
- 
+
  <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -38,8 +38,8 @@
     <span class="visually-hidden">Next</span>
   </button> -->
 
-  
-   
+
+
 <!-- </div> -->
 
 
@@ -49,7 +49,7 @@
 
 <div class="products" >
   <div class="product" >
-    <mat-card *ngFor="let dt of filtercategory | filter:searchkey:'description'">
+    <mat-card *ngFor="let dt of filtercategory | filter:searchkey:'tags'">
       <img src="{{dt.image}}" class="product-img"/>
       <p><strong>{{dt.title}}</strong></p>
       <p>{{dt.description}}</p>

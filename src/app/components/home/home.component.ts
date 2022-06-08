@@ -52,7 +52,7 @@ public totalItem: number=0;
             else{
               a.category = "Watches"
             }
-            Object.assign(a,{quantity:1,total:a.price})
+            Object.assign(a,{quantity:1,total:(a.price*a.quantity)})
           });
           console.log(this.result);
 
@@ -83,19 +83,16 @@ public totalItem: number=0;
         this.cartService.search.next(this.searchterm);
       }
 
-inc(result:any){
-if(result.quantity!=10){
- result.quantity+=1;
- this.cartService.addtoCart(result);
-}
-}
 
-dec(result:any){
-  if(result.quantity!=1){
-    result.quantity-=1;
-    this.cartService.addtoCart(result);
-  }
-}
+
+
+
+// dec(result:any){
+//   if(result.quantity!=1){
+//     result.quantity-=1;
+//     this.cartService.addtoCart(result);
+//   }
+// }
 
 
     }

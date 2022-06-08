@@ -20,6 +20,7 @@ import { CheckoutProductsComponent } from './components/checkout-products/checko
 import { ToastrModule } from 'ngx-toastr';
 import { FilterPipe } from './shared/filter.pipe';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
+import { ProductService } from './services/product.service';
 
 
 
@@ -55,7 +56,7 @@ FilterPipe
       progressBar:true
         })
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
