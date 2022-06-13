@@ -33,6 +33,8 @@ export class CartService {
     this.cartItemList.push(product);
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
+
+
     console.log(this.cartItemList);
   }
   getTotalPrice():number{
@@ -43,7 +45,7 @@ export class CartService {
     console.log(grandTotal)
     return grandTotal;
   }
-  removeCartItem(product: any){
+  removeCartItem(product: IProduct){
       for(let i=0;i<this.cartItemList.length;i++){
 
       if(this.cartItemList[i].product_id === product.product_id){

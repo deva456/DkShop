@@ -31,16 +31,13 @@ this.calculatePrice();
 
   }
 
-  removeItem(item:IProduct){
-    this.cartService.removeCartItem(item)
-    this.calculatePrice();
-      }
+
 
       calculatePrice(){
 
-console.log(this.grandTotal)
+
         this.grandTotal=this.cartService.getTotalPrice();
-        console.log(this.grandTotal)
+
       }
 
 

@@ -22,15 +22,15 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-  //   this.cartService.getProducts()
-  //   .subscribe(res=>{
-  //     this.product=res;
-  //     this.grandTotal=this.cartService.getTotalPrice();
-  //   })
-  //   this.cartService.getProducts()
-  //   .subscribe(res=>{
-  //   this.totalItem = res.length;
-  // })
+    this.cartService.getProducts()
+    .subscribe(res=>{
+      this.product=res;
+      this.grandTotal=this.cartService.getTotalPrice();
+    })
+    this.cartService.getProducts()
+    .subscribe(res=>{
+    this.totalItem = res.length;
+  })
 
 
 

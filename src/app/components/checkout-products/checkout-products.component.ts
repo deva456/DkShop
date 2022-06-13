@@ -24,45 +24,40 @@ export class CheckoutProductsComponent implements OnInit {
     })
    }
 
-  removeItem(item:IProduct){
+  removeItem(item:any){
 this.cartService.removeCartItem(item);
 this.calculatePrice();
   }
 
   calculatePrice(){
-
     this.grandTotal=this.cartService.getTotalPrice();
-
   }
 
   emptycart(){
+
     this.cartService.removeAllCart();
   }
 
-
-  inc(product_id:any, quantity:any){
-    for(let i=0;i<this.product.length;i++){
+  inc(product_id:any,quantity:any){
+    for(let i =0; i<this.product.length;i++){
       if(this.product[i].product_id===product_id){
         if(quantity!=5){
-          this.product[i].quantity=parseInt(quantity)+1;
-          this.calculatePrice();
-          }
+        this.product[i].quantity=parseInt(quantity)+1;
+        }
       }
     }
-
   }
 
-  dec(product_id:any, quantity:any){
-    for(let i=0;i<this.product.length;i++){
+
+
+  dec(product_id:any,quantity:any){
+    for(let i =0; i<this.product.length;i++){
       if(this.product[i].product_id===product_id){
         if(quantity!=1){
         this.product[i].quantity=parseInt(quantity)-1;
-        this.grandTotal=this.cartService.getTotalPrice();
         }
       }
-
     }
-
   }
 
 // addToCart(product:IProduct){
@@ -71,3 +66,4 @@ this.calculatePrice();
 // }
 
 }
+
