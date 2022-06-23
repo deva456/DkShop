@@ -640,3 +640,52 @@ border: 1px solid rgb(81, 78, 78);
   margin-top: 10px;
 
 }
+
+
+.subtotal{
+  /* display: inline-flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  width: 100%;
+  height: 150px;
+  padding: 20px;
+  background-color: #f3f3f3;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin: 20px;
+
+}
+.subtotal > p{
+  font-size: 20px!important;
+  /* line-height: 1.255!important; */
+text-align: center;
+}
+.subtotal_gift{
+  display: flex;
+  flex-direction: row;
+  font-size: 11px !important;
+
+}
+.subtotal_gift > p{
+  font-size: 11px !important;
+
+
+}
+
+.subtotal_gift > input{
+  margin-right: 5px;
+  margin-left: 5px;
+
+}
+
+.subtotal >p> button{
+  background-color: #f0c14b;
+  border: 1px solid;
+  border-radius: 2px;
+  width: 80%;
+  height: 40px;
+  color: black;
+  border-color: #a88134 #9c7e31 #846a29;
+font-weight: 600;
+}
+

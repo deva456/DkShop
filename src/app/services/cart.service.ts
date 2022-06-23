@@ -14,6 +14,7 @@ export class CartService {
   public productList=new BehaviorSubject<any>([]);
 
   public search =new BehaviorSubject<string>("");
+  http: any;
 
 
   constructor() { }
@@ -29,14 +30,23 @@ export class CartService {
 
 
   addtoCart(product:any){
-
+    const itemIndex = this.cartItemList.findIndex(item => item.productId === product.productId);
+    if (itemIndex === -1) {
     this.cartItemList.push(product);
-    this.productList.next(this.cartItemList);
+    }
+    else {
+      this.cartItemList[itemIndex].quantity = this.cartItemList[itemIndex].quantity + product.quantity;
+    }
+    // const newCart = this.cartItemList.slice(0);
+    this.productList.next(this.cartItemList.slice(0));
     this.getTotalPrice();
-
-
-    console.log(this.cartItemList);
+    console.log(this.cartItemList.slice(0));
   }
+  private convertItemToIdOnly(item:any): any{
+    return {product: item.product.productId, qty: item.qty};
+  }
+
+
   getTotalPrice():number{
     let grandTotal=0;
     this.cartItemList.map((a:any)=>{
@@ -45,13 +55,14 @@ export class CartService {
     console.log(grandTotal)
     return grandTotal;
   }
+
   removeCartItem(product: IProduct){
       for(let i=0;i<this.cartItemList.length;i++){
 
-      if(this.cartItemList[i].product_id === product.product_id){
+      if(this.cartItemList[i].productId === product.productId){
 
-      this.cartItemList.splice(i,1);
-
+      this.cartItemList.splice(i,0);
+     console.log(this.cartItemList.splice(i,0));
       }
 
     }

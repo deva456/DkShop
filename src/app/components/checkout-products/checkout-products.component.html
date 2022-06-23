@@ -1,6 +1,6 @@
 <div class="checkout_products" *ngIf="product.length !=0">
 
-  <div class="checkout_product" *ngFor="let p of product, let i= index">
+  <div class="checkout_product" *ngFor="let p of product">
 
      <img src="{{p.image}}" alt="" class="checkout_product_img">
      <div class="checkout_product_info">
@@ -21,7 +21,7 @@
         <div class="checkout_options">
           <div class="checkout_dropdown">
             </div>
-            <a > Delete</a>
+            <a (click)="removeItem(p)" > Delete</a>
         </div>
 
      </div>
@@ -38,9 +38,9 @@
       <h2>Quantity</h2>
       <div class="quantity-button">
 
-        <button class="btn" id="plus" type="button" (click)="inc(p.product_id,p.quantity)"><i class="fa fa-plus"></i></button>
+        <button class="btn" id="plus" type="button" (click)="inc(p.productId,p.quantity)"><i class="fa fa-plus"></i></button>
         <span>{{p.quantity}}</span>
-        <button class="btn" id="minus" type="button" (click)="dec(p.product_id,p.quantity)"><i class="fa fa-minus"></i></button>
+        <button class="btn" id="minus" type="button" (click)="dec(p.productId,p.quantity)"><i class="fa fa-minus"></i></button>
        </div>
     </div>
   </div>

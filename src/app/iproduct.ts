@@ -4,7 +4,7 @@
 {
 
 
-    product_id: number;
+  productId: number;
 
     title: string;
 
@@ -18,7 +18,7 @@
 
     quantity: number;
 
-    short_desc: string;
+    shortDesc: string;
 
     categorie_id:number;
 

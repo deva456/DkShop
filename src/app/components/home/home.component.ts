@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/iproduct';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-home',
@@ -13,12 +13,12 @@ export class HomeComponent implements OnInit {
 
 searchkey:string='';
 public filtercategory : any;
-// filter:any;
+isExistInCart:boolean = false;
 public searchterm:string='';
 public totalItem: number=0;
 
   result:IProduct[]=[];
-  constructor(private order:ProductService, private cartService: CartService, private toast:ToastrService) { }
+  constructor(private order:ProductService, private cartService: CartService) { }
 
 
   ngOnInit(): void {
@@ -63,10 +63,12 @@ public totalItem: number=0;
           this.searchkey=val;
 
         })
+
       }
       addtocart(dt:any){
+        this.isExistInCart = true;
         this.cartService.addtoCart(dt);
-        alert('item added to cart successfully')
+
       }
 
       filter(category : string){

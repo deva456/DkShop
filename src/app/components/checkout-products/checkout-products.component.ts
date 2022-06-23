@@ -12,7 +12,7 @@ export class CheckoutProductsComponent implements OnInit {
 
   public product:IProduct[]=[];
   public grandTotal!:number;
-
+  public totalItem: number=0;
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
@@ -20,13 +20,14 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartService.getProducts()
     .subscribe(res=>{
       this.product=res;
-      this.grandTotal=this.cartService.getTotalPrice();
+      // this.grandTotal=this.cartService.getTotalPrice();
+
     })
    }
 
   removeItem(item:any){
 this.cartService.removeCartItem(item);
-this.calculatePrice();
+
   }
 
   calculatePrice(){
@@ -40,9 +41,10 @@ this.calculatePrice();
 
   inc(product_id:any,quantity:any){
     for(let i =0; i<this.product.length;i++){
-      if(this.product[i].product_id===product_id){
+      if(this.product[i].productId===product_id){
         if(quantity!=5){
         this.product[i].quantity=parseInt(quantity)+1;
+        this.calculatePrice;
         }
       }
     }
@@ -52,9 +54,10 @@ this.calculatePrice();
 
   dec(product_id:any,quantity:any){
     for(let i =0; i<this.product.length;i++){
-      if(this.product[i].product_id===product_id){
+      if(this.product[i].productId===product_id){
         if(quantity!=1){
         this.product[i].quantity=parseInt(quantity)-1;
+        this.calculatePrice;
         }
       }
     }

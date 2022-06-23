@@ -69,30 +69,33 @@
 
         </div>
         <div><h5>Cart Subtotal</h5>{{grandTotal|currency:'INR'}}</div>
-        <div>
+        <div *ngIf="shopedmore">
           <h5 class="inline difwidth">Shipping and Handling</h5>
-          <p class="inline alignright center">Free Shipping</p>
+          <p  class="inline alignright center">Free Shipping</p>
         </div>
-        <div><h5>Order Total</h5>{{grandTotal|currency:'INR'}}</div>
-
-        <div>
-          <h3 class="topborder"><span>Payment Method</span></h3>
-          <input type="radio" value="banktransfer" name="payment" checked><p>Direct Bank Transfer</p>
-          <p class="padleft">
-            Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won't be shipped until the funds have cleared in our account.
-          </p>
+        <div *ngIf="!shopedmore">
+          <h5 class="inline difwidth">Shipping and Handling</h5>
+          <p  class="inline alignright center">{{grandTotal|currency:'INR'}} + 100*</p>
         </div>
+        <!-- <div><h5>Order Total</h5>{{grandTotal|currency:'INR'}}</div> -->
 
-        <div><input type="radio" value="cheque" name="payment"><p>Cheque Payment</p></div>
-        <div>
-          <input type="radio" value="paypal" name="payment"><p>UPI ID:</p>
-          <fieldset class="paymenttypes">
+        <div class="subtotal" >
 
-          </fieldset>
+          <p *ngIf="shopedmore"><span style="font-weight: 500;">Order Total:</span> ({{totalItem}} items)
+              <strong>{{grandTotal|currency:'INR'}}</strong></p>
+              <p *ngIf="!shopedmore"><span style="font-weight: 500;">Order Total:</span> ({{totalItem}} items)
+                <strong>{{grandTotal+100|currency:'INR'}}</strong></p>
+<div>
+
+</div>
+<p><button routerLink="/">Proceed to payment</button></p>
+<!-- <fieldset class="paymenttypes">
+
+          </fieldset> -->
           <a href="#" class="padleft"></a>
         </div>
 
-        <button class="place-order" routerLink="/thankyou">Place Order</button>
+        <!-- <button class="place-order" routerLink="/thankyou">Place Order</button> -->
 
       </div>
     </form>

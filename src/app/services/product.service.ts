@@ -7,23 +7,33 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  url!: string;
+  readonly url="https://localhost:5001/api"
 
 
   constructor(private http:HttpClient) { }
 
   getData():Observable<IProduct[]>{
-
-    let url="http://localhost:3000/user"
-    return this.http.get<IProduct[]>(url);
+    return this.http.get<IProduct[]>(this.url+'/Products');
   }
 
   getSingleProduct(product_id: Number): Observable<IProduct> {
-  return this.http.get<IProduct>(this.url + 'products/' + product_id);
+  return this.http.get<IProduct>(this.url + '/Products' + product_id);
   }
 
   getProductsFromCategory(title: String): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.url + 'products/category/' + title);
+    return this.http.get<IProduct[]>(this.url + '/Products/category' + title);
+  }
+
+  addProduct(val:any){
+    return this.http.post(this.url+'/Products/',val)
+  }
+
+  UpdateProduct(val:any){
+    return this.http.put(this.url+'/Products',val)
+  }
+
+  deleteProduct(val:any){
+    return this.http.delete(this.url+'/Products/'+val)
   }
 
   }
