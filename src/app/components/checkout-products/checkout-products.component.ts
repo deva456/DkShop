@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 import { IProduct } from 'src/app/iproduct';
 import { CartService } from 'src/app/services/cart.service';
@@ -13,7 +14,7 @@ export class CheckoutProductsComponent implements OnInit {
   public product:IProduct[]=[];
   public grandTotal!:number;
   public totalItem: number=0;
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
 
@@ -23,6 +24,10 @@ export class CheckoutProductsComponent implements OnInit {
       this.grandTotal=this.cartService.getTotalPrice();
 
     })
+   }
+
+   showRemoveMessage(){
+    this.toastr.error('item removed successfully!','Removed item')
    }
 
   removeItem(item:any){

@@ -30,17 +30,20 @@ export class CartService {
 
 
   addtoCart(product:any){
+
     const itemIndex = this.cartItemList.findIndex(item => item.productId === product.productId);
     if (itemIndex === -1) {
     this.cartItemList.push(product);
+    console.log()
     }
     else {
+
       this.cartItemList[itemIndex].quantity = this.cartItemList[itemIndex].quantity + product.quantity;
     }
     // const newCart = this.cartItemList.slice(0);
     this.productList.next(this.cartItemList.slice(0));
     this.getTotalPrice();
-    console.log(this.cartItemList.slice(0));
+
   }
 
 
@@ -61,7 +64,7 @@ export class CartService {
       if(this.cartItemList[i].productId === product.productId){
 
       this.cartItemList.splice(i,1);
-     console.log(this.cartItemList.splice(i,0));
+
       }
 
     }

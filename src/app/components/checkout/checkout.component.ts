@@ -43,7 +43,7 @@ title1 = 'razorpay-intergration';
 options = {
   "key": "rzp_test_KMuAYKn5Hl8vDL",
   "amount": this.grandTotal,
-  "name": "Devashish Kapadnis",
+  "name": "Bhanu Bediya",
   "description": "Payment Details",
   "order_id": "",
   "handler": function (response: any) {
@@ -79,9 +79,9 @@ paynow() {
   else{
     this.options.amount = this.grandTotal*100;
   }//paise
-  this.options.prefill.name = "rishikesh";
-  this.options.prefill.email = "rishikeshfirodiya38@gmail.com";
-  this.options.prefill.contact = "7722084155";
+  this.options.prefill.name = "bhanu";
+  this.options.prefill.email = "bhanubediya@gmail.com";
+  this.options.prefill.contact = "9082356825";
   var rzp1 = new Razorpay(this.options);
   rzp1.open();
   rzp1.on('payment.failed', function (response: any) {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/iproduct';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
-
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +18,7 @@ public searchterm:string='';
 public totalItem: number=0;
 
   result:IProduct[]=[];
-  constructor(private order:ProductService, private cartService: CartService) { }
+  constructor(private order:ProductService, private cartService: CartService, private toastr:ToastrService)  { }
 
 
   ngOnInit(): void {
@@ -65,11 +65,18 @@ public totalItem: number=0;
         })
 
       }
-      addtocart(dt:any){
-        this.isExistInCart = true;
-        this.cartService.addtoCart(dt);
+showSuccessMessage(){
 
-      }
+  this.toastr.success( 'product successfully added to cart' , 'wohhoo!');
+}
+
+      addtocart(dt:IProduct){
+
+            this.cartService.addtoCart(dt);
+
+        // this.cartService.addtoCart(dt);
+        }
+
 
       filter(category : string){
 

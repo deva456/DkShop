@@ -54,17 +54,14 @@
       <p><strong>{{dt.title}}</strong></p>
       <p>{{dt.shortDesc}}</p>
       <p class="money"> <strong>{{dt.price | currency:'INR'}}</strong></p>
-      <!-- <div class="quantity-button">
-     <button class="btn" id="plus" type="button" (click)="inc(dt)"><i class="fa fa-plus"></i></button>
-     <span>{{dt.quantity}}</span>
-     <button class="btn" id="minus" type="button" (click)="dec(dt)" ><i class="fa fa-minus"></i></button>
-    </div> -->
-    <div >
-     <button class="Add-to-cart"  (click)="addtocart(dt)">  Add to cart </button>
+
+    <div *ngIf="!isExistInCart">
+     <button class="Add-to-cart"  (click)="addtocart(dt);showSuccessMessage()">  Add to cart </button>
     </div>
-     <!-- <div *ngIf="isExistInCart" class="card-footer bg-success text-center text-white">
-      <span><i class="fas fa-check-circle mr-2"></i>Product Added</span>
+     <!-- <div *ngIf="isExistInCart && dt.productId===this.dt" >
+      <button class="Add-to-cart">Product Added</button>
     </div> -->
+
     </mat-card>
   </div>
 </div>

@@ -51,9 +51,10 @@ FilterPipe
 
     HttpClientModule,
     ToastrModule.forRoot({
-      timeOut:1000,
+      timeOut:2000,
       progressAnimation: 'increasing',
-      progressBar:true
+      progressBar:true,
+      positionClass:'toast-bottom-right'
         })
   ],
   providers: [ProductService],
