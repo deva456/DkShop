@@ -20,7 +20,7 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartService.getProducts()
     .subscribe(res=>{
       this.product=res;
-      // this.grandTotal=this.cartService.getTotalPrice();
+      this.grandTotal=this.cartService.getTotalPrice();
 
     })
    }

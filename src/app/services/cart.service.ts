@@ -42,9 +42,7 @@ export class CartService {
     this.getTotalPrice();
     console.log(this.cartItemList.slice(0));
   }
-  private convertItemToIdOnly(item:any): any{
-    return {product: item.product.productId, qty: item.qty};
-  }
+
 
 
   getTotalPrice():number{
@@ -53,6 +51,7 @@ export class CartService {
       grandTotal += (a.price*a.quantity);
     })
     console.log(grandTotal)
+
     return grandTotal;
   }
 
@@ -61,7 +60,7 @@ export class CartService {
 
       if(this.cartItemList[i].productId === product.productId){
 
-      this.cartItemList.splice(i,0);
+      this.cartItemList.splice(i,1);
      console.log(this.cartItemList.splice(i,0));
       }
 
