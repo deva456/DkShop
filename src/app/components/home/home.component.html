@@ -49,7 +49,7 @@
 
 <div class="products" >
   <div class="product" >
-    <mat-card *ngFor="let dt of filtercategory | filter:searchkey:'tags'">
+    <mat-card *ngFor="let dt of filtercategory | filter:searchkey:'tags' | paginate: { itemsPerPage: 8, currentPage: p }">
       <img src="{{dt.image}}" class="product-img"/>
       <p><strong>{{dt.title}}</strong></p>
       <p>{{dt.shortDesc}}</p>
@@ -58,12 +58,14 @@
     <div *ngIf="!isExistInCart">
      <button class="Add-to-cart"  (click)="addtocart(dt)">  Add to cart </button>
     </div>
+
      <!-- <div *ngIf="isExistInCart >
       <button class="Add-to-cart">Product Added</button>
     </div> -->
 
     </mat-card>
   </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 

@@ -16,7 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
 
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { FilterPipe } from './shared/filter.pipe';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
@@ -45,7 +45,7 @@ FilterPipe
     MatIconModule,
     NgbModule,
     MatCardModule,
-
+    NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
 

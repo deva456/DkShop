@@ -10,7 +10,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+p:any;
 searchkey:string='';
 public filtercategory : any;
 isExistInCart:boolean = false;
