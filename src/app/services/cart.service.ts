@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable,  Subject } from 'rxjs';
 
 import { IProduct } from '../iproduct';
@@ -17,7 +18,7 @@ export class CartService {
   http: any;
 
 
-  constructor() { }
+  constructor(private toastr:ToastrService) { }
 
   getProducts(){
     return this.productList.asObservable();
@@ -34,16 +35,17 @@ export class CartService {
     const itemIndex = this.cartItemList.findIndex(item => item.productId === product.productId);
     if (itemIndex === -1) {
     this.cartItemList.push(product);
-    console.log()
+    this.toastr.success( `${product.title} Successfully added to cart` , `Awesome!`);
+
     }
     else {
-
+      this.toastr.warning( 'Check your cart' , `${product.title} already added!`,{
+        timeOut:2500
+      });
       this.cartItemList[itemIndex].quantity = this.cartItemList[itemIndex].quantity + product.quantity;
     }
-    // const newCart = this.cartItemList.slice(0);
     this.productList.next(this.cartItemList.slice(0));
     this.getTotalPrice();
-
   }
 
 
@@ -68,7 +70,7 @@ export class CartService {
       }
 
     }
-
+    this.toastr.error('item removed successfully!',`${product.title} Removed!`)
     this.productList.next(this.cartItemList);
 
 

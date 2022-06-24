@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
 declare var Razorpay:any;
 @Component({
@@ -15,7 +16,7 @@ export class CheckoutComponent implements OnInit {
 public shopedmore:boolean=false;
 
 
-  constructor(private cartService: CartService  ) { }
+  constructor(private cartService: CartService,private toastr:ToastrService  ) { }
 
   ngOnInit(): void {
 
@@ -30,7 +31,15 @@ public shopedmore:boolean=false;
   })
   if(this.grandTotal>5000){
   this.shopedmore=true;
-
+  this.toastr.success('Free shipping specially for you','Wohhoo!',{
+positionClass:'toast-top-full-width'
+  });
+  }
+  else{
+    this.toastr.info(`₹100 has been charged to you`,`Shop more than 5000`,{
+      positionClass: 'toast-top-full-width',
+      timeOut:2000
+    })
   }
 }
 

@@ -65,10 +65,10 @@ public totalItem: number=0;
         })
 
       }
-showSuccessMessage(){
+// showSuccessMessage(){
 
-  this.toastr.success( 'product successfully added to cart' , 'wohhoo!');
-}
+//   this.toastr.success( 'product successfully added to cart' , 'wohhoo!');
+// }
 
       addtocart(dt:IProduct){
 

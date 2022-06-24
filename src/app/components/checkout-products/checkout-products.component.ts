@@ -26,9 +26,9 @@ export class CheckoutProductsComponent implements OnInit {
     })
    }
 
-   showRemoveMessage(){
-    this.toastr.error('item removed successfully!','Removed item')
-   }
+  //  showRemoveMessage(){
+  //   this.toastr.error('item removed successfully!','Removed item')
+  //  }
 
   removeItem(item:any){
 this.cartService.removeCartItem(item);

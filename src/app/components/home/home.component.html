@@ -56,9 +56,9 @@
       <p class="money"> <strong>{{dt.price | currency:'INR'}}</strong></p>
 
     <div *ngIf="!isExistInCart">
-     <button class="Add-to-cart"  (click)="addtocart(dt);showSuccessMessage()">  Add to cart </button>
+     <button class="Add-to-cart"  (click)="addtocart(dt)">  Add to cart </button>
     </div>
-     <!-- <div *ngIf="isExistInCart && dt.productId===this.dt" >
+     <!-- <div *ngIf="isExistInCart >
       <button class="Add-to-cart">Product Added</button>
     </div> -->
 

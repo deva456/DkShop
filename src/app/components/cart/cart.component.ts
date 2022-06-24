@@ -32,9 +32,9 @@ this.calculatePrice();
 
   }
 
-  showDetailsMessage(){
-    this.toastr.info('Please fill the necessary details','Kindly Note')
-  }
+  // showDetailsMessage(){
+  //   this.toastr.info('Please fill the necessary details','Kindly Note')
+  // }
 
       calculatePrice(){
 
