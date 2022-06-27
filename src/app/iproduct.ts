@@ -26,6 +26,9 @@
 
     tags : string;
 
+    addedtowishlist:boolean;
+    addedtocart:boolean;
+
 }
 
 

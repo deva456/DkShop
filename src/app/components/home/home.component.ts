@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/iproduct';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+import { WishlistService } from 'src/app/services/wishlist.service';
+import { WishListAPI } from 'src/app/wishlistAPI';
+
 
 @Component({
   selector: 'app-home',
@@ -15,10 +18,11 @@ searchkey:string='';
 public filtercategory : any;
 isExistInCart:boolean = false;
 public searchterm:string='';
+public totalItem1: number=0;
 public totalItem: number=0;
-
+wishlistArray:WishListAPI[]=[];
   result:IProduct[]=[];
-  constructor(private order:ProductService, private cartService: CartService, private toastr:ToastrService)  { }
+  constructor(private order:ProductService, private cartService: CartService, private toastr:ToastrService, private wishlist:WishlistService)  { }
 
 
   ngOnInit(): void {
@@ -64,17 +68,20 @@ public totalItem: number=0;
 
         })
 
+        this.wishlist.getData().subscribe((wishListData:WishListAPI[]) =>{
+              console.log(wishListData);
+              this.wishlistArray = wishListData;
+            });
       }
-// showSuccessMessage(){
 
-//   this.toastr.success( 'product successfully added to cart' , 'wohhoo!');
-// }
+      findWishlistIndex(productId:number){
+
+      }
 
       addtocart(dt:IProduct){
-
+        dt.addedtocart=true;
             this.cartService.addtoCart(dt);
 
-        // this.cartService.addtoCart(dt);
         }
 
 
@@ -96,15 +103,33 @@ public totalItem: number=0;
 
 
 
-// dec(result:any){
-//   if(result.quantity!=1){
-//     result.quantity-=1;
-//     this.cartService.addtoCart(result);
-//   }
-// }
 
 
-    }
+handleaddtowishlist(product:IProduct){
+  for(let i=0;i<this.filtercategory.length;i++){
+    if(this.filtercategory[i].productId===product.productId){
+      this.wishlist.addtoWishlist(this.filtercategory[i].productId).subscribe(()=>{
+        product.addedtowishlist=true;
+});
+  }
+}
+}
+
+handleremovewishlist(product:any){
+  for(let i=0;i<this.filtercategory.length;i++){
+    if(this.filtercategory[i].productId=== product.productId){
+      this.wishlist.removeWishlist(this.filtercategory[i].productId).subscribe(()=>{
+product.addedtowishlist=false;
+})
+  }
+}
+
+}
+
+}
+
+
+
 
 
 

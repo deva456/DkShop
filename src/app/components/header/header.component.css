@@ -97,6 +97,7 @@ color: #ede5da;
 
 .header-menu>div{
   margin: 8px;
+  cursor: pointer;
 }
 
 .header-menu-searchbar{
@@ -105,7 +106,7 @@ color: #ede5da;
   height: 40px;
   justify-content: center;
   flex: 1;
-
+cursor: pointer;
 }
 
 .header-menu-logo{
@@ -119,6 +120,7 @@ color: #ede5da;
   display: flex;
   flex-direction: column;
   /* padding-right: 2rem; */
+  cursor: pointer;
 }
 
 .header-menu-signin a{
@@ -141,6 +143,7 @@ font-size: 13px;
 
 .header-menu-cart{
   padding-top: 10px;
+  cursor: pointer;
 }
 
 .header-cart-number{

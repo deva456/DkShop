@@ -49,19 +49,21 @@
 
 <div class="products" >
   <div class="product" >
-    <mat-card *ngFor="let dt of filtercategory | filter:searchkey:'tags' | paginate: { itemsPerPage: 8, currentPage: p }">
-      <img src="{{dt.image}}" class="product-img"/>
+    <mat-card *ngFor="let dt of filtercategory  | filter:searchkey:'tags' | paginate: { itemsPerPage: 8, currentPage: p } ">
+     <div *ngIf="!dt.addedtowishlist" class="wishlist"><i class="fa-regular fa-heart" (click)="handleaddtowishlist(dt)"></i></div>
+     <div *ngIf="dt.addedtowishlist" class="wishlist"><i class="fa-solid fa-heart" (click)="handleremovewishlist(dt)" ></i></div>
+     <img src="{{dt.image}}" class="product-img" />
       <p><strong>{{dt.title}}</strong></p>
       <p>{{dt.shortDesc}}</p>
       <p class="money"> <strong>{{dt.price | currency:'INR'}}</strong></p>
 
-    <div *ngIf="!isExistInCart">
+    <div *ngIf="!dt.addedtocart">
      <button class="Add-to-cart"  (click)="addtocart(dt)">  Add to cart </button>
     </div>
 
-     <!-- <div *ngIf="isExistInCart >
-      <button class="Add-to-cart">Product Added</button>
-    </div> -->
+     <div *ngIf="dt.addedtocart" >
+      <button class="Add-to-cart1" ><i class="fa-solid fa-circle-check" id="check"></i><strong> Product Added</strong></button>
+    </div>
 
     </mat-card>
   </div>

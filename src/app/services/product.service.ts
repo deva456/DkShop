@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import{HttpClient}from '@angular/common/http'
 import { IProduct } from '../iproduct';
 import { Observable } from 'rxjs';
+import { WishListAPI } from '../wishlistAPI';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  readonly url="https://localhost:5001/api"
+   url="https://localhost:5001/api"
+
 
 
   constructor(private http:HttpClient) { }
@@ -35,6 +37,26 @@ export class ProductService {
   deleteProduct(val:any){
     return this.http.delete(this.url+'/Products/'+val)
   }
+
+  addtoWishlist(product:WishListAPI){
+    return this.http.post(this.url+ "/Wishlists", {productId:product})
+      }
+
+
+
+      removeWishlist(wishlistId:WishListAPI){
+        console.log(wishlistId);
+    return this.http.delete(this.url+ "/Wishlists/" + wishlistId)
+      }
+
+
+
+
+
+
+      addAddress(val:any){
+        return this.http.post(this.url+'/BillingDetails',val)
+      }
 
   }
 

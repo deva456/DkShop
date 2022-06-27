@@ -32,6 +32,7 @@ export class CheckoutProductsComponent implements OnInit {
 
   removeItem(item:any){
 this.cartService.removeCartItem(item);
+item.addedtocart=false;
 
   }
 

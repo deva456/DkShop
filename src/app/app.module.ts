@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FilterPipe } from './shared/filter.pipe';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { ProductService } from './services/product.service';
+import { WishlistService } from './services/wishlist.service';
 
 
 
@@ -57,7 +58,7 @@ FilterPipe
       positionClass:'toast-bottom-right'
         })
   ],
-  providers: [ProductService],
+  providers: [ProductService,WishlistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
