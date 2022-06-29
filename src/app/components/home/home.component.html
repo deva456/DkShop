@@ -50,9 +50,13 @@
 <div class="products" >
   <div class="product" >
     <mat-card *ngFor="let dt of filtercategory  | filter:searchkey:'tags' | paginate: { itemsPerPage: 8, currentPage: p } ">
-     <div *ngIf="!dt.addedtowishlist" class="wishlist"><i class="fa-regular fa-heart" (click)="handleaddtowishlist(dt)"></i></div>
-     <div *ngIf="dt.addedtowishlist" class="wishlist"><i class="fa-solid fa-heart" (click)="handleremovewishlist(dt)" ></i></div>
-     <img src="{{dt.image}}" class="product-img" />
+      <div *ngIf="!dt.addedtowishlist" class="wishlist"><i class="fa-regular fa-heart" (click)="handleaddtowishlist(dt);addToWishlistCart(dt)" ></i></div>
+     <div *ngIf="dt.addedtowishlist " class="wishlist" >
+
+      <i class="fa-solid fa-heart" (click)="handleremovewishlist(dt)" ></i>
+    </div>
+
+     <img  src="{{dt.image}}"class="product-img" />
       <p><strong>{{dt.title}}</strong></p>
       <p>{{dt.shortDesc}}</p>
       <p class="money"> <strong>{{dt.price | currency:'INR'}}</strong></p>

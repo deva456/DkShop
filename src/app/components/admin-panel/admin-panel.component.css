@@ -1,0 +1,23 @@
+.navbar
+{
+  background-color: #232f3e;
+}
+.top
+{
+  color:white;
+  font-size: 2em;
+  font-weight: 500;
+  margin-left:1em;
+  color:black;
+  padding-top:0.6em;
+}
+/* .btn
+{
+  background-color: rgb(203, 174, 239);
+} */
+.tbody
+{
+  padding-left:1em;
+  padding-top:1em;
+}
+

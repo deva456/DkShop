@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { CartComponent } from './components/cart/cart.component';
+
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
@@ -22,6 +22,8 @@ import { FilterPipe } from './shared/filter.pipe';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { ProductService } from './services/product.service';
 import { WishlistService } from './services/wishlist.service';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 
 
@@ -30,13 +32,15 @@ import { WishlistService } from './services/wishlist.service';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CartComponent,
+
     CheckoutComponent,
     HomeComponent,
     LoginComponent,
     CheckoutProductsComponent,
     ThankyouComponent,
-FilterPipe
+FilterPipe,
+WishlistComponent,
+AdminPanelComponent
 
   ],
   imports: [

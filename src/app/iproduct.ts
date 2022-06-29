@@ -1,8 +1,8 @@
 
+
   export interface IProduct
 
 {
-
 
   productId: number;
 
@@ -26,7 +26,7 @@
 
     tags : string;
 
-    addedtowishlist:boolean;
+ addedtowishlist:boolean;
     addedtocart:boolean;
 
 }

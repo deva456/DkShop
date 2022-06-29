@@ -5,6 +5,8 @@ import { CartService } from 'src/app/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from 'src/app/services/wishlist.service';
 import { WishListAPI } from 'src/app/wishlistAPI';
+import { WishlistCartService } from 'src/app/services/wishlist-cart.service';
+
 
 
 @Component({
@@ -14,6 +16,7 @@ import { WishListAPI } from 'src/app/wishlistAPI';
 })
 export class HomeComponent implements OnInit {
 p:any;
+
 searchkey:string='';
 public filtercategory : any;
 isExistInCart:boolean = false;
@@ -22,7 +25,7 @@ public totalItem1: number=0;
 public totalItem: number=0;
 wishlistArray:WishListAPI[]=[];
   result:IProduct[]=[];
-  constructor(private order:ProductService, private cartService: CartService, private toastr:ToastrService, private wishlist:WishlistService)  { }
+  constructor(private order:ProductService, private cartService: CartService, private toastr:ToastrService, private wishlist:WishlistService,  private wishlistCartService:WishlistCartService)  { }
 
 
   ngOnInit(): void {
@@ -74,14 +77,16 @@ wishlistArray:WishListAPI[]=[];
             });
       }
 
-      findWishlistIndex(productId:number){
-
+      findWishlistIndex(product:any){
+if(product.addedtowishlist===true){
+  this.wishlistArray.indexOf(product.productId)>=0
+}
       }
 
       addtocart(dt:IProduct){
         dt.addedtocart=true;
             this.cartService.addtoCart(dt);
-
+            localStorage.setItem('wishlistcart',JSON.stringify(this.filtercategory))
         }
 
 
@@ -100,19 +105,18 @@ wishlistArray:WishListAPI[]=[];
       }
 
 
-
-
-
-
-
 handleaddtowishlist(product:IProduct){
   for(let i=0;i<this.filtercategory.length;i++){
     if(this.filtercategory[i].productId===product.productId){
-      this.wishlist.addtoWishlist(this.filtercategory[i].productId).subscribe(()=>{
+      this.wishlist.addtoWishlist(this.filtercategory[i].productId,this.filtercategory[i].image,this.filtercategory[i].title,this.filtercategory[i].shortDesc,this.filtercategory[i].price).subscribe(()=>{
         product.addedtowishlist=true;
-});
+      });
   }
 }
+}
+
+addToWishlistCart(dt:WishListAPI){
+  this.wishlistCartService.addToWishlistCart(dt);
 }
 
 handleremovewishlist(product:any){
@@ -136,4 +140,8 @@ product.addedtowishlist=false;
 
 
 
+
+function input() {
+  throw new Error('Function not implemented.');
+}
 

@@ -5,6 +5,7 @@ import { IProduct } from '../iproduct';
 import { Observable } from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,12 +22,13 @@ export class WishlistService {
   }
 
 
-  addtoWishlist(product:IProduct){
-    return this.http.post(this.url+ "/Wishlists", {productId:product})
+  addtoWishlist(product:IProduct,Image:IProduct,Title:IProduct,ShortDesc:IProduct,Price:IProduct){
+    return this.http.post(this.url+ "/Wishlists", {productId:product,image:Image,title:Title,shortDesc:ShortDesc,price:Price})
       }
 
+
       removeWishlist(product:IProduct){
-        console.log(product);
+
     return this.http.delete(this.url+ "/Wishlists/" + product)
       }
 }

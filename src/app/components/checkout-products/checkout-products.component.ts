@@ -21,8 +21,8 @@ export class CheckoutProductsComponent implements OnInit {
     this.cartService.getProducts()
     .subscribe(res=>{
       this.product=res;
+      this.totalItem = res.length;
       this.grandTotal=this.cartService.getTotalPrice();
-
     })
    }
 
@@ -33,11 +33,7 @@ export class CheckoutProductsComponent implements OnInit {
   removeItem(item:any){
 this.cartService.removeCartItem(item);
 item.addedtocart=false;
-
-  }
-
-  calculatePrice(){
-    this.grandTotal=this.cartService.getTotalPrice();
+localStorage.setItem('wishlistcart',JSON.stringify(this.product))
   }
 
   emptycart(){
@@ -50,9 +46,9 @@ item.addedtocart=false;
       if(this.product[i].productId===product_id){
         if(quantity!=5){
         this.product[i].quantity=parseInt(quantity)+1;
-        this.calculatePrice;
         }
       }
+      this.grandTotal=this.cartService.getTotalPrice();
     }
   }
 
@@ -63,9 +59,9 @@ item.addedtocart=false;
       if(this.product[i].productId===product_id){
         if(quantity!=1){
         this.product[i].quantity=parseInt(quantity)-1;
-        this.calculatePrice;
         }
       }
+      this.grandTotal=this.cartService.getTotalPrice();
     }
   }
 

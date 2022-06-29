@@ -38,21 +38,6 @@ export class ProductService {
     return this.http.delete(this.url+'/Products/'+val)
   }
 
-  addtoWishlist(product:WishListAPI){
-    return this.http.post(this.url+ "/Wishlists", {productId:product})
-      }
-
-
-
-      removeWishlist(wishlistId:WishListAPI){
-        console.log(wishlistId);
-    return this.http.delete(this.url+ "/Wishlists/" + wishlistId)
-      }
-
-
-
-
-
 
       addAddress(val:any){
         return this.http.post(this.url+'/BillingDetails',val)

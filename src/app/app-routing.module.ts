@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './components/cart/cart.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+
 import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
@@ -8,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { LoginComponent } from './components/login/login.component';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,12 @@ const routes: Routes = [
   },
   {
     path:'thankyou',  component:ThankyouComponent
+  },
+  {
+    path:'wishlist',  component:WishlistComponent
+  },
+  {
+    path:'admin-panel',  component:AdminPanelComponent
   }
 ];
 

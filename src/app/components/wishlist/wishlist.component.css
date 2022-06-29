@@ -1,4 +1,4 @@
-  .banner{
+.banner{
   background-image: url(https://m.media-amazon.com/images/I/61-8rBAD68L._SX3000_.jpg);
 background-size: cover;
 padding-top: 15.65%;
@@ -307,4 +307,23 @@ background-color: #ad8a4529;
   color: rgb(62, 144, 10);
   font-size: 15px;
 padding-right: 3px;
+}
+
+.checkout_empty{
+  padding-bottom: 11.5%;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 6%;
+
+}
+.checkout_empty button{
+color: white;
+font-size: 30px;
+  background-color: #f0ac00;
+  opacity: 99%;
+  border: 2px solid;
+  padding: 9px;
+  border-radius: 3px;
+  border-color: #a88134 #9c7e31 #846a29;
+cursor: pointer;
 }

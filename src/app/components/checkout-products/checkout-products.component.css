@@ -141,3 +141,36 @@ font-size: 30px;
     padding-right: 6px;
     cursor: pointer;
   }
+
+.class-right-subtotal{
+margin-left: 60%
+}
+
+  .subtotal{
+    display: inline-flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    width: 300px;
+    height: 80px;
+    padding: 20px;
+    background-color: #f3f3f3;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin: 20px;
+
+  }
+
+
+  .subtotal > button{
+    background-color: #f0c14b;
+    border: 1px solid;
+    border-radius: 2px;
+    width: 100%;
+    height: 30px;
+    color: black;
+    border-color: #a88134 #9c7e31 #846a29;
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 3px 0px;
+  }
+
