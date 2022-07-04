@@ -18,7 +18,7 @@ export class CheckoutProductsComponent implements OnInit {
   constructor(private cartService: CartService, private toastr:ToastrService, private productService:ProductService) { }
 
   ngOnInit(): void {
-
+//subscribing data and storing in product
     this.cartService.getProducts()
     .subscribe(res=>{
       this.product=res;
@@ -27,7 +27,7 @@ export class CheckoutProductsComponent implements OnInit {
     })
    }
 
-
+//remove item method
   removeItem(item:IProduct){
 this.cartService.removeCartItem(item);
 item.addedtocart=false;
@@ -38,28 +38,24 @@ this.productService.EditCart(item).subscribe(()=>{
 })
   }
 
-  emptycart(){
-    this.cartService.removeAllCart();
-  }
-
-  inc(product_id:any,quantity:any){
+  //increament method
+  inc(product_id:any,quantity:number){
     for(let i =0; i<this.product.length;i++){
       if(this.product[i].productId===product_id){
         if(quantity!=5){
-        this.product[i].quantity=parseInt(quantity)+1;
+        this.product[i].quantity=quantity+1;
         }
       }
       this.grandTotal=this.cartService.getTotalPrice();
     }
   }
 
-
-
-  dec(product_id:any,quantity:any){
+//decreament method
+  dec(product_id:any,quantity:number){
     for(let i =0; i<this.product.length;i++){
       if(this.product[i].productId===product_id){
         if(quantity!=1){
-        this.product[i].quantity=parseInt(quantity)-1;
+        this.product[i].quantity=quantity-1;
         }
       }
       this.grandTotal=this.cartService.getTotalPrice();

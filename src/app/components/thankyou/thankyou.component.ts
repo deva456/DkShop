@@ -17,12 +17,13 @@ dateObj= Date.now();
   constructor( private billingDetails:BillingDetailsService, private cartService:CartService) { }
 
   ngOnInit(): void {
+    //billing details data subscribing
     this.billingDetails.getBillingDetails().subscribe((data:IBillingDetails[])=>{
       console.log(data)
       this.bill=data;
       console.log(this.bill)
     })
-
+//cartservice data storing in product by subscribing
     this.cartService.getProducts()
     .subscribe(res=>{
       this.product=res;

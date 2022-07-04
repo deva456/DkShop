@@ -11,34 +11,24 @@ import { WishListAPI } from 'src/app/wishlistAPI';
 })
 export class HeaderComponent implements OnInit {
   public totalItem: number=0;
-  public totalItem1: number=0;
   public searchterm:string='';
   wishlistArray: WishListAPI[]=[];
 constructor(private cartService: CartService,private wishlistCartService:WishlistCartService) { }
 
 ngOnInit(): void {
+//subscribing and finding length of array
   this.cartService.getProducts()
   .subscribe(res=>{
   this.totalItem = res.length;
 })
-
-// this.wishlist.getProducts()
-//   .subscribe(val=>{
-//   this.totalItem1 = val.length;
-// })
-
-
 }
 
-
+//search method to fire an event and get the value to show in html
 search(event:any){
 this.searchterm=(event.target as HTMLInputElement).value;
 this.cartService.search.next(this.searchterm);
 }
 
-loadno(){
-  this.totalItem1=this.wishlistArray.length;
-}
 
 }
 

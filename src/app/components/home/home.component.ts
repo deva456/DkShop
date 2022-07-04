@@ -18,21 +18,21 @@ export class HomeComponent implements OnInit {
 p:any;
 
 searchkey:string='';
-public filtercategory : any;
+public filtercategory : IProduct[]=[];
 isExistInCart:boolean = false;
 public searchterm:string='';
-public totalItem1: number=0;
 public totalItem: number=0;
 wishlistArray:WishListAPI[]=[];
   result:IProduct[]=[];
-  constructor(private order:ProductService, private cartService: CartService, private toastr:ToastrService,  private wishlistCartService:WishlistCartService)  { }
+  constructor(private productService:ProductService, private cartService: CartService, private toastr:ToastrService,  private wishlistCartService:WishlistCartService)  { }
 
 
   ngOnInit(): void {
-    this.order.getData().subscribe((data:IProduct[]) =>{
+//subscribing and string data in result then in filtercategory from product service
+    this.productService.getData().subscribe((data:IProduct[]) =>{
       this.cartService.getProducts()
       .subscribe(res=>{
-      this.totalItem = res.length;
+      this.totalItem = res.length;// to find the length of the array
     })
           console.log(data);
           this.result = data;
@@ -61,29 +61,22 @@ wishlistArray:WishListAPI[]=[];
             Object.assign(a,{quantity:1,total:(a.price*a.quantity)})
           });
           console.log(this.result);
-
         });
 
         // searchkey
         this.cartService.search.subscribe((val:any)=>{
           this.searchkey=val;
-
         })
-
-//         if(this.filtercategory.addedtocart===true){
-// this.filtercategory.addedtowishlist=!this.filtercategory.addedtowishlist
-//         }
             }
 
 
-//added to cart
+//added to cart calling from cart service
       addtocart(dt:IProduct){
         dt.addedtocart=true;
-
-            this.cartService.addtoCart(dt);
+        this.cartService.addtoCart(dt);
         }
 
-//filter category
+//filter category to divide data into categories
       filter(category : string){
         this.filtercategory = this.result
         .filter((a:any) =>{
@@ -104,27 +97,27 @@ wishlistArray:WishListAPI[]=[];
 updateBool(product:IProduct){
  product.addedtowishlist=!product.addedtowishlist;
  this.wishlistCartService.addToWishlistCart(product);
-      this.order.updateBool(product).subscribe(()=>{
+      this.productService.updateBool(product).subscribe(()=>{
   product;
   console.log('addedtowishlist true');
       })
 }
 //updateing boolean colum in database i.e(addedtocartt)
 updateCartBool(product:IProduct){
-product.addedtocart=product.addedtocart;
-this.order.EditCart(product).subscribe(()=>{
+product.addedtocart=product.addedtocart;//toggling between true and false
+this.productService.EditCart(product).subscribe(()=>{ //subscribing data
   product;
   console.log('cart Boolean change')
 })
 }
-// remove cart item through button in mat-car and also updating boolean val in database
+// remove cart item through button in mat-card and also updating boolean val in database
 removeCartItem(product:IProduct){
-  product.addedtocart=!product.addedtocart;
-  this.order.EditCart(product).subscribe(()=>{
+  product.addedtocart=!product.addedtocart;//toggling between true and false
+  this.productService.EditCart(product).subscribe(()=>{ //subscribing data
     product;
     console.log('cart Boolean change')
   })
-  this.cartService.removeCartItem(product);
+  this.cartService.removeCartItem(product);//calling remove cartitem from cart service
 }
 }
 

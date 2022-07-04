@@ -18,6 +18,7 @@ export class WishlistComponent implements OnInit {
   constructor( private product:ProductService, private cartService:CartService, private wishlistCartService:WishlistCartService) { }
 
   ngOnInit(): void {
+    //subscribing and storing data in wishlistArray
     this.wishlistCartService.getProducts().subscribe((wishListData:IProduct[]) =>{
       console.log(wishListData);
       this.wishlistArray = wishListData;
@@ -25,23 +26,23 @@ export class WishlistComponent implements OnInit {
 
 
 }
-
+// addtocart called from service
 addToCart(dt:IProduct){
   dt.addedtocart=true;
-      this.cartService.addtoCart(dt);
+   this.cartService.addtoCart(dt);
   }
-
+//addtowishlist cart called from wishlist cart service
   addToWishlistCart(dt:IProduct){
     this.wishlistCartService.addToWishlistCart(dt);
   }
-
-removeCart(dt:IProduct){
+//remove item call from service
+removeWislistCartItem(dt:IProduct){
   this.wishlistCartService.removeWishlistCartItem(dt)
 }
-
+//update boolean called from product service
 updateBool(product:IProduct){
-  product.addedtowishlist=!product.addedtowishlist;
-       this.product.updateBool(product).subscribe(()=>{
+  product.addedtowishlist=!product.addedtowishlist;//toggling between true or false
+  this.product.updateBool(product).subscribe(()=>{//subscribing data
    product;
    console.log('addedtowishlist true');
        })

@@ -11,8 +11,7 @@ export class WishlistCartService {
 
 
   public wishlistCartItemList:IProduct[]=[]
-  public productList=new BehaviorSubject<any>([]);
-
+  public productList=new BehaviorSubject<IProduct[]>([]);
   public search =new BehaviorSubject<string>("");
   http: any;
 
@@ -23,15 +22,16 @@ export class WishlistCartService {
     return this.productList.asObservable();
 
   }
-  setProducts(product :any){
+  setProducts(product :IProduct[]){
     this.wishlistCartItemList.push(...product);
     this.productList.next(product);
   }
 
-
-  addToWishlistCart(product:any){
+//adding product to cart
+  addToWishlistCart(product:IProduct){
     const itemIndex = this.wishlistCartItemList.findIndex(item => item.productId === product.productId);
     if (itemIndex === -1) {
+     //if cart is empty then add product into cart
     this.wishlistCartItemList.push(product);
     }
     else{
@@ -43,23 +43,17 @@ export class WishlistCartService {
 
   }
 
-
+//removing item by getting matching id of existing product
   removeWishlistCartItem(product: IProduct){
       for(let i=0;i<this.wishlistCartItemList.length;i++){
-
       if(this.wishlistCartItemList[i].productId === product.productId){
-
       this.wishlistCartItemList.splice(i,1);
-
       }
-
     }
-    // this.toastr.error('item removed successfully!',`${product.title} Removed!`)
     this.productList.next(this.wishlistCartItemList);
-
-    // localStorage.setItem('wishlistcart',JSON.stringify(this.wishlistCartItemList))
-
   }
+
+  //clearing all cart item from wishlist
   removeAllCart(){
     this.wishlistCartItemList=[]
     this.productList.next(this.wishlistCartItemList);
