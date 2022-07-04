@@ -1,4 +1,4 @@
-
+<!-- categories displaying on homepage                        -->
 <nav class="header-bottom">
   <div class="header-bottom-list">
     <a (click)="filter('')" class="header-hover">Home</a>
@@ -10,6 +10,7 @@
   </div>
 </nav>
 
+<!-- Banner displaying on homepage                        -->
 
 <div class="banner">
   <h2 class="banner-title1">Expect the unexpected.</h2>
@@ -17,61 +18,35 @@
  </div>
 
 
- <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="../../../assets/images/img1.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../../../assets/images/img2.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../../../assets/images/img3.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button> -->
 
-
-
-<!-- </div> -->
-
-
-
-
-
+<!-- products displaying on homepage                        -->
 
 <div class="products" >
   <div class="product" >
     <mat-card *ngFor="let dt of filtercategory  | filter:searchkey:'tags' | paginate: { itemsPerPage: 8, currentPage: p } ">
-      <div *ngIf="!dt.addedtowishlist" class="wishlist"><i class="fa-regular fa-heart" (click)="handleaddtowishlist(dt);addToWishlistCart(dt)" ></i></div>
-     <div *ngIf="dt.addedtowishlist " class="wishlist" >
+     <span  *ngIf="!dt.addedtocart"> <div *ngIf="!dt.addedtowishlist" class="wishlist">
+        <i class="fa-regular fa-heart" (click)="updateBool(dt)" ></i><!-- color heart red-->
+      </div>
+     <div *ngIf="dt.addedtowishlist" class="wishlist" >
+      <i class="fa-solid fa-heart" (click)="updateBool(dt)" ></i><!-- remove heart color -->
+    </div></span>
+     <img  src="{{dt.image}}"class="product-img" /><!-- image -->
+      <p><strong>{{dt.title}}</strong></p><!-- -->
+      <p>{{dt.shortDesc}}</p><!--short description -->
+      <p class="money"> <strong>{{dt.price | currency:'INR'}}</strong></p><!-- -->
 
-      <i class="fa-solid fa-heart" (click)="handleremovewishlist(dt)" ></i>
-    </div>
-
-     <img  src="{{dt.image}}"class="product-img" />
-      <p><strong>{{dt.title}}</strong></p>
-      <p>{{dt.shortDesc}}</p>
-      <p class="money"> <strong>{{dt.price | currency:'INR'}}</strong></p>
-
+      <!-- if prodcut is empty show this by default -->
     <div *ngIf="!dt.addedtocart">
-     <button class="Add-to-cart"  (click)="addtocart(dt)">  Add to cart </button>
+     <button class="Add-to-cart"  (click)="addtocart(dt);updateCartBool(dt)">  Add to cart </button>
     </div>
 
+    <!--if product added to cart show this -->
      <div *ngIf="dt.addedtocart" >
-      <button class="Add-to-cart1" ><i class="fa-solid fa-circle-check" id="check"></i><strong> Product Added</strong></button>
+      <button class="Add-to-cart1" (click)="updateCartBool(dt);removeCartItem(dt)"><i class="fa-solid fa-circle-check" id="check"></i><strong> Product Added</strong></button>
     </div>
-
     </mat-card>
   </div>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls><!--pagination end -->
 </div>
 
 

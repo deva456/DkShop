@@ -4,6 +4,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 
 import { CheckoutProductsComponent } from './components/checkout-products/checkout-products.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 import { HomeComponent } from './components/home/home.component';
 
@@ -15,7 +16,9 @@ const routes: Routes = [
   {
   path: '',component: HomeComponent
   },
-
+{
+path: 'Products/:productId', component:DialogComponent
+},
 
   {
     path: 'checkout-products', component:CheckoutProductsComponent
@@ -31,6 +34,12 @@ const routes: Routes = [
   },
   {
     path:'admin-panel',  component:AdminPanelComponent
+  },
+  {
+    path:'admin-panel/:productId',  component:AdminPanelComponent
+  },
+  {
+    path:'login',  component:LoginComponent
   }
 ];
 

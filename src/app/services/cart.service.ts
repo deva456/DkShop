@@ -37,12 +37,12 @@ export class CartService {
     if (itemIndex === -1) {
     this.cartItemList.push(product);
 
-    this.toastr.success( `${product.title} Successfully added to cart` , `Awesome!`);
+    this.toastr.success( `${product.title} Successfully added to 🛍️` , `Awesome! 📣 🎉`);
     }
     else {
-      // this.toastr.warning( 'Check your cart' , `${product.title} already added!`,{
-      //   timeOut:2500
-      // });
+      this.toastr.warning( 'Check your cart' , `${product.title} already added!`,{
+        timeOut:2500
+     });
       this.cartItemList[itemIndex].quantity = this.cartItemList[itemIndex].quantity + product.quantity;
 
     }

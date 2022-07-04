@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IProduct } from 'src/app/iproduct';
 import { ProductService } from 'src/app/services/product.service';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatCard } from '@angular/material/card';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-panel',
@@ -12,61 +16,98 @@ export class AdminPanelComponent implements OnInit {
   showAdd !: boolean;
   formValue !: FormGroup;
   productData !: any;
-  // productModel : IProduct = new ();
+ p: any
   showUpdate !: boolean;
-  constructor(private api :ProductService, private formBuilder: FormBuilder) { }
+
+
+
+  title:FormControl = new FormControl("");
+
+  image:FormControl = new FormControl("");
+
+  images:FormControl = new FormControl("");
+
+  description:FormControl = new FormControl("");
+
+  price:FormControl = new FormControl("");
+
+  quantity:FormControl = new FormControl("");
+
+  shortDesc:FormControl = new FormControl("");
+
+  categorie_id:FormControl = new FormControl("");
+
+  category:FormControl = new FormControl("");
+
+  tags:FormControl = new FormControl("");
+
+  addedtowishlist: FormControl = new FormControl("");
+
+
+  result: IProduct[]=[];
+  constructor(private api :ProductService, private formBuilder: FormBuilder,private dialog : MatDialog, private toastr:ToastrService) { }
 
   ngOnInit(): void {
+    this.api.getData().subscribe((data:IProduct[]) =>{
 
-    // this.formValue = this.formBuilder.group({
-    //   id : [''],
-    //   title : [''],
-    //   image : [''],
-    //   desc : [''],
-    //   price : [''],
-    //   quantity : [''],
-    //   shortdesc : [''],
-    //   category : [''],
-    //   tags : ['']
+    //   this.cartService.getProducts()
+    //   .subscribe(res=>{
+    //   this.totalItem = res.length;
     // })
-    // this.getAllProducts();
+          console.log(data);
+          this.result = data;
+})
   }
 
-  clickAddProduct()
-  {
-    this.formValue.reset();
-    this.showAdd = true;
-    this.showUpdate = false;
-  }
-  postProductDetails(dt:any)
-  {
-   this.api.addProduct(dt);
-  }
 
-  getAllProducts()
-  {
-    this.api.getData()
-    .subscribe(res=>{
-       this.productData = res;
-    })
-  }
 
-  deleteProduct(row : any)
-  {
-    this.api.deleteProduct(row.productId)
-    .subscribe(res=>{
-      alert("Product deleted");
-      this.getAllProducts();
-    })
-  }
 
-  onEdit(row : any)
-  {
+//for open the dialog
+openDialog(): void {
+  const dialogRef = this.dialog.open(DialogComponent, {
+    width: '35%'
 
-  }
+  }).afterClosed().subscribe(val => {
+    if(val === 'save')
+    {
+      this.api.getData();
+    }
+  })
 
-  updateProduct()
-  {
-
-  }
 }
+
+editProduct(dt : IProduct)
+{
+  this.dialog.open(DialogComponent,{
+    width: '30%',
+    data: dt
+  }).afterClosed().subscribe(val => {
+    if(val === 'update')
+    {
+      this.api.getData();
+    }
+  })
+}
+
+updateProduct(product:IProduct){
+  this.api.UpdateProduct(product).subscribe(()=>{
+    product;
+    console.log('editing done')
+  })
+}
+
+deleteProduct(productId : any)
+{
+  this.api.deleteProduct(productId)
+  .subscribe({
+    next:(res)=>{
+      this.toastr.error(`${productId} 🛒 deleted`,`Successfully Deleted!`)
+    },
+    error:()=>{
+      alert("error while deleting the product")
+    }
+  })
+}
+}
+
+

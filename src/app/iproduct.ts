@@ -4,7 +4,7 @@
 
 {
 
-  productId: number;
+  productId?: number;
 
     title: string;
 
@@ -26,8 +26,9 @@
 
     tags : string;
 
- addedtowishlist:boolean;
-    addedtocart:boolean;
+    addedtowishlist?:boolean;
+
+    addedtocart?:boolean;
 
 }
 

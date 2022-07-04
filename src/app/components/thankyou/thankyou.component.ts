@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IBillingDetails } from 'src/app/billingDetails';
+import { BillingDetailsService } from 'src/app/services/billing-details.service';
 
 @Component({
   selector: 'app-thankyou',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thankyou.component.css']
 })
 export class ThankyouComponent implements OnInit {
-
-  constructor() { }
+bill:IBillingDetails[]=[];
+  constructor( private billingDetails:BillingDetailsService) { }
 
   ngOnInit(): void {
+    this.billingDetails.getBillingDetails().subscribe((data:IBillingDetails[])=>{
+      console.log(data)
+      this.bill=data;
+      console.log(this.bill)
+    })
   }
 
 }

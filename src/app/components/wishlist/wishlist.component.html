@@ -1,6 +1,6 @@
-<div class="checkout_products" *ngIf="wishlistArray.length !=0"><div class="products" >
-  <div class="product" >
-    <mat-card *ngFor="let w of wishlistArray  ">
+<div class="checkout_products" *ngIf="wishlistArray.length !=0 "><div class="products" >
+  <div class="product" *ngFor="let w of wishlistArray "  >
+    <mat-card *ngIf="w.addedtowishlist" >
      <img src="{{w.image}}" class="product-img" />
       <p><strong>{{w.title}}</strong></p>
       <p>{{w.shortDesc}}</p>
@@ -8,7 +8,8 @@
 
     <div *ngIf="!w.addedtocart">
       <div >
-     <button class="Add-to-cart" >  Add to cart </button>
+     <button class="Add-to-cart" (click)="addToCart(w);removeCart(w);updateBool(w)" >  Add to cart </button>
+     <button class="removeCart" (click)="removeCart(w);updateBool(w)" >  Remove </button>
     </div>
 </div>
      <div *ngIf="w.addedtocart" >

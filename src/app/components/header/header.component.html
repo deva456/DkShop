@@ -22,12 +22,11 @@
        <span class="header-menu-bottom-item">Account & lists </span>
 
       </div>
-      <div class="header-menu-signin">
-       <span class="header-menu-top-item">Returns </span>
-       <span routerLink="/wishlist" routerLinkActive="active-link" class="header-menu-bottom-item">& Wishlist </span>
-
+      <div class="header-menu-cart">
+       <span routerLink="/wishlist" routerLinkActive="active-link" class="wishlist-cart-icon"><i class="fa-solid fa-heart" ></i> </span>
+       <p class="header-cart-number1"></p>
      </div>
-     <div routerLink="/checkout-products" routerLinkActive="active-link" class="header-menu-cart">
+     <div routerLink="/checkout-products" routerLinkActive="active-link" class="header-menu-cart" id="prod-cart">
        <mat-icon><a  class="cartlogo">shopping_cart</a></mat-icon>
        <p class="header_cart_number"></p>
        <p class="header-cart-number">{{totalItem}}</p>

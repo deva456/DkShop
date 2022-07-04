@@ -253,9 +253,6 @@ padding-left: px;
   cursor: pointer;
 }
 
-.product .Add-to-cart:hover{
-
-}
 
 .product:hover{
   background-color: rgba(245, 243, 240, 0.886);
@@ -326,4 +323,17 @@ font-size: 30px;
   border-radius: 3px;
   border-color: #a88134 #9c7e31 #846a29;
 cursor: pointer;
+}
+
+.removeCart{
+  margin-top: 20px;
+  background-color: rgba(203, 47, 47, 0.979);
+  opacity: 99%;
+  border: 1.5px solid;
+  padding: 8px;
+  border-radius: 3px;
+  border-color: rgb(164, 93, 93);
+  color: #ffffff;
+  margin-left: 5px;
+  cursor: pointer;
 }

@@ -3,7 +3,7 @@ import { IProduct } from 'src/app/iproduct';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
-import { WishlistService } from 'src/app/services/wishlist.service';
+// import { WishlistService } from 'src/app/services/wishlist.service';
 import { WishListAPI } from 'src/app/wishlistAPI';
 import { WishlistCartService } from 'src/app/services/wishlist-cart.service';
 
@@ -25,12 +25,11 @@ public totalItem1: number=0;
 public totalItem: number=0;
 wishlistArray:WishListAPI[]=[];
   result:IProduct[]=[];
-  constructor(private order:ProductService, private cartService: CartService, private toastr:ToastrService, private wishlist:WishlistService,  private wishlistCartService:WishlistCartService)  { }
+  constructor(private order:ProductService, private cartService: CartService, private toastr:ToastrService,  private wishlistCartService:WishlistCartService)  { }
 
 
   ngOnInit(): void {
     this.order.getData().subscribe((data:IProduct[]) =>{
-
       this.cartService.getProducts()
       .subscribe(res=>{
       this.totalItem = res.length;
@@ -71,27 +70,21 @@ wishlistArray:WishListAPI[]=[];
 
         })
 
-        this.wishlist.getData().subscribe((wishListData:WishListAPI[]) =>{
-              console.log(wishListData);
-              this.wishlistArray = wishListData;
-            });
-      }
+//         if(this.filtercategory.addedtocart===true){
+// this.filtercategory.addedtowishlist=!this.filtercategory.addedtowishlist
+//         }
+            }
 
-      findWishlistIndex(product:any){
-if(product.addedtowishlist===true){
-  this.wishlistArray.indexOf(product.productId)>=0
-}
-      }
 
+//added to cart
       addtocart(dt:IProduct){
         dt.addedtocart=true;
+
             this.cartService.addtoCart(dt);
-            localStorage.setItem('wishlistcart',JSON.stringify(this.filtercategory))
         }
 
-
+//filter category
       filter(category : string){
-
         this.filtercategory = this.result
         .filter((a:any) =>{
           if(a.category == category || category == ''){
@@ -99,38 +92,42 @@ if(product.addedtowishlist===true){
           }
         })
       }
+
+      //search event for search bar
       search(event:any){
         this.searchterm=(event.target as HTMLInputElement).value;
         this.cartService.search.next(this.searchterm);
       }
 
 
-handleaddtowishlist(product:IProduct){
-  for(let i=0;i<this.filtercategory.length;i++){
-    if(this.filtercategory[i].productId===product.productId){
-      this.wishlist.addtoWishlist(this.filtercategory[i].productId,this.filtercategory[i].image,this.filtercategory[i].title,this.filtercategory[i].shortDesc,this.filtercategory[i].price).subscribe(()=>{
-        product.addedtowishlist=true;
-      });
-  }
+//updating boolean column in database i.e(addedtowishlist)
+updateBool(product:IProduct){
+ product.addedtowishlist=!product.addedtowishlist;
+ this.wishlistCartService.addToWishlistCart(product);
+      this.order.updateBool(product).subscribe(()=>{
+  product;
+  console.log('addedtowishlist true');
+      })
 }
-}
-
-addToWishlistCart(dt:WishListAPI){
-  this.wishlistCartService.addToWishlistCart(dt);
-}
-
-handleremovewishlist(product:any){
-  for(let i=0;i<this.filtercategory.length;i++){
-    if(this.filtercategory[i].productId=== product.productId){
-      this.wishlist.removeWishlist(this.filtercategory[i].productId).subscribe(()=>{
-product.addedtowishlist=false;
+//updateing boolean colum in database i.e(addedtocartt)
+updateCartBool(product:IProduct){
+product.addedtocart=product.addedtocart;
+this.order.EditCart(product).subscribe(()=>{
+  product;
+  console.log('cart Boolean change')
 })
-  }
+}
+// remove cart item through button in mat-car and also updating boolean val in database
+removeCartItem(product:IProduct){
+  product.addedtocart=!product.addedtocart;
+  this.order.EditCart(product).subscribe(()=>{
+    product;
+    console.log('cart Boolean change')
+  })
+  this.cartService.removeCartItem(product);
+}
 }
 
-}
-
-}
 
 
 
@@ -141,7 +138,6 @@ product.addedtowishlist=false;
 
 
 
-function input() {
-  throw new Error('Function not implemented.');
-}
+
+
 

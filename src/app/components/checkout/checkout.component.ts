@@ -1,6 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { IBillingDetails } from 'src/app/billingDetails';
+import { BillingDetailsService } from 'src/app/services/billing-details.service';
 import { CartService } from 'src/app/services/cart.service';
+import{FormGroup} from '@angular/forms'
 declare var Razorpay:any;
 @Component({
   selector: 'app-checkout',
@@ -9,14 +13,60 @@ declare var Razorpay:any;
 })
 export class CheckoutComponent implements OnInit {
 
-
+exForm!:FormGroup;
   public product:any=[];
   public grandTotal!:number;
   public totalItem: number=0;
 public shopedmore:boolean=false;
 
 
-  constructor(private cartService: CartService,private toastr:ToastrService  ) { }
+  constructor(private cartService: CartService,private toastr:ToastrService, private BillingService:BillingDetailsService ) { }
+  FirstName:FormControl = new FormControl("");
+
+  LastName:FormControl = new FormControl("");
+
+  Address:FormControl = new FormControl("");
+
+  City:FormControl = new FormControl("");
+
+  State:FormControl = new FormControl("");
+
+  Postcode:FormControl = new FormControl("");
+
+  MobileNo:FormControl = new FormControl("");
+
+  EmailAddress:FormControl = new FormControl("");
+
+  OrderNotes:FormControl = new FormControl("");
+
+  save(){
+
+    let Billing:IBillingDetails = {
+
+      FirstName:this.FirstName.value,
+
+      LastName:this.LastName.value,
+
+      Address:this.Address.value,
+
+      City:this.City.value,
+
+      State:this.State.value,
+
+      Postcode:parseInt(this.Postcode.value),
+
+      MobileNo:this.MobileNo.value,
+
+      EmailAddress:this.EmailAddress.value,
+
+      OrderNotes:this.OrderNotes.value
+
+    };
+
+    this.BillingService.addProduct(Billing);
+
+  }
+
 
   ngOnInit(): void {
 
@@ -41,6 +91,8 @@ positionClass:'toast-top-full-width'
       timeOut:2000
     })
   }
+
+
 }
 
 //razorpay payment integration
@@ -112,6 +164,9 @@ onPaymentSuccess(event: any): void {
   this.message = "Success Payment";
 }
 
+submit(post:any){
+  console.log("submitted form successfully!")
+}
 
 
 }

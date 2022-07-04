@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { IProduct } from 'src/app/iproduct';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-checkout-products',
@@ -14,7 +15,7 @@ export class CheckoutProductsComponent implements OnInit {
   public product:IProduct[]=[];
   public grandTotal!:number;
   public totalItem: number=0;
-  constructor(private cartService: CartService, private toastr:ToastrService) { }
+  constructor(private cartService: CartService, private toastr:ToastrService, private productService:ProductService) { }
 
   ngOnInit(): void {
 
@@ -26,18 +27,18 @@ export class CheckoutProductsComponent implements OnInit {
     })
    }
 
-  //  showRemoveMessage(){
-  //   this.toastr.error('item removed successfully!','Removed item')
-  //  }
 
-  removeItem(item:any){
+  removeItem(item:IProduct){
 this.cartService.removeCartItem(item);
 item.addedtocart=false;
-localStorage.setItem('wishlistcart',JSON.stringify(this.product))
+item.addedtocart=item.addedtocart;
+this.productService.EditCart(item).subscribe(()=>{
+  item;
+  console.log('cart Boolean change')
+})
   }
 
   emptycart(){
-
     this.cartService.removeAllCart();
   }
 
@@ -65,10 +66,6 @@ localStorage.setItem('wishlistcart',JSON.stringify(this.product))
     }
   }
 
-// addToCart(product:IProduct){
-//   const thecartitem=new  CartItem(product);
-// this.cartService.addToCart(thecartitem)
-// }
 
 }
 

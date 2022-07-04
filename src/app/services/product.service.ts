@@ -18,29 +18,46 @@ export class ProductService {
     return this.http.get<IProduct[]>(this.url+'/Products');
   }
 
-  getSingleProduct(product_id: Number): Observable<IProduct> {
-  return this.http.get<IProduct>(this.url + '/Products' + product_id);
+  getSingleProduct(productId: Number): Observable<IProduct[]> {
+    console.log(productId)
+  return this.http.get<IProduct[]>(this.url + '/Products' + productId);
   }
 
-  getProductsFromCategory(title: String): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.url + '/Products/category' + title);
-  }
+  // getProductsFromId(productId: number): Observable<IProduct[]> {
+  //   return this.http.get<IProduct[]>(this.url + '/Products/' + productId);
+  // }
 
-  addProduct(val:any){
-    return this.http.post(this.url+'/Products/',val)
+  addProduct(val:IProduct){
+    this.http.post<IProduct>(this.url+'/Products',val, {
+
+      headers:{
+
+        "Access-Control-Allow-Origin":"*"
+
+      }
+
+    }).subscribe(result => console.log("Data entered in Database Successfully !"));
   }
 
   UpdateProduct(val:any){
-    return this.http.put(this.url+'/Products',val)
+    console.log(val)
+    return this.http.put(this.url+'/Products/'+val.productId,val)
   }
+
+  updateBool(addedtowishlist1:any){
+    console.log(addedtowishlist1)
+
+    return this.http.put(this.url+'/Products/'+ addedtowishlist1.productId,addedtowishlist1)
+  }
+
 
   deleteProduct(val:any){
     return this.http.delete(this.url+'/Products/'+val)
   }
 
 
-      addAddress(val:any){
-        return this.http.post(this.url+'/BillingDetails',val)
+  EditCart(val:any){
+        return this.http.put(this.url+'/Products/'+val.productId,val)
       }
 
   }

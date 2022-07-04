@@ -308,3 +308,12 @@ background-color: #ad8a4529;
   font-size: 15px;
 padding-right: 3px;
 }
+
+.product >mat-card:hover{
+  transform: translateY(-25px);
+}
+
+ .product> mat-card>img:hover{
+  transform:translate(5px,50px)rotate(8deg) scale(1.7);
+
+}

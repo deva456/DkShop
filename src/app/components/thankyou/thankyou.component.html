@@ -1,17 +1,12 @@
-<div class=content>
-  <div class="wrapper-1">
-    <div class="wrapper-2">
+<div class=content >
+  <div class="wrapper-1" >
+    <div class="wrapper-2" *ngFor="let b of bill">
       <h2>Thank you !</h2>
       <p>Thanks for visiting Our amshop shoping site.  </p>
-      <p>your order has been placed successfully.  </p>
+      <p>your orderId: {{b.FirstName}} has been placed successfully.  </p>
       <p>you will shortly receive a confirmation mail.  </p>
-
-
-
-
     <button class="go-home" routerLink="/">Go To Home</button>
 </div>
 </div>
-
 
 

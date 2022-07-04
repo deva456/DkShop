@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
-import { WishListAPI } from '../wishlistAPI';
+import { IProduct } from '../iproduct';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +10,14 @@ import { WishListAPI } from '../wishlistAPI';
 export class WishlistCartService {
 
 
-  public wishlistCartItemList:WishListAPI[]=[]
+  public wishlistCartItemList:IProduct[]=[]
   public productList=new BehaviorSubject<any>([]);
 
   public search =new BehaviorSubject<string>("");
   http: any;
 
 
-  constructor() { }
+  constructor(private toastr:ToastrService) { }
 
   getProducts(){
     return this.productList.asObservable();
@@ -28,19 +30,21 @@ export class WishlistCartService {
 
 
   addToWishlistCart(product:any){
-
     const itemIndex = this.wishlistCartItemList.findIndex(item => item.productId === product.productId);
     if (itemIndex === -1) {
     this.wishlistCartItemList.push(product);
-    // localStorage.setItem('cart',JSON.stringify(this.wishlistCartItemList))
-    // console.log(localStorage.setItem('wishlistcart',JSON.stringify(this.wishlistCartItemList)))
+    }
+    else{
+         this.toastr.warning( 'Check your cart' , `${product.title} already added!`,{
+         timeOut:2500
+      });
     }
     this.productList.next(this.wishlistCartItemList.slice(0));
 
   }
 
 
-  removeWishlistCartItem(product: WishListAPI){
+  removeWishlistCartItem(product: IProduct){
       for(let i=0;i<this.wishlistCartItemList.length;i++){
 
       if(this.wishlistCartItemList[i].productId === product.productId){
