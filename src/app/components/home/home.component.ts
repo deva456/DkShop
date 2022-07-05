@@ -4,7 +4,6 @@ import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 // import { WishlistService } from 'src/app/services/wishlist.service';
-import { WishListAPI } from 'src/app/wishlistAPI';
 import { WishlistCartService } from 'src/app/services/wishlist-cart.service';
 
 
@@ -22,7 +21,6 @@ public filtercategory : IProduct[]=[];
 isExistInCart:boolean = false;
 public searchterm:string='';
 public totalItem: number=0;
-wishlistArray:WishListAPI[]=[];
   result:IProduct[]=[];
   constructor(private productService:ProductService, private cartService: CartService, private toastr:ToastrService,  private wishlistCartService:WishlistCartService)  { }
 
@@ -102,7 +100,7 @@ updateBool(product:IProduct){
   console.log('addedtowishlist true');
       })
 }
-//updateing boolean colum in database i.e(addedtocartt)
+//updating boolean colum in database i.e(addedtocartt)
 updateCartBool(product:IProduct){
 product.addedtocart=product.addedtocart;//toggling between true and false
 this.productService.EditCart(product).subscribe(()=>{ //subscribing data

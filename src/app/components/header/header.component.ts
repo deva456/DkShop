@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { WishlistCartService } from 'src/app/services/wishlist-cart.service';
 // import { WishlistService } from 'src/app/services/wishlist.service';
-import { WishListAPI } from 'src/app/wishlistAPI';
+
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,6 @@ import { WishListAPI } from 'src/app/wishlistAPI';
 export class HeaderComponent implements OnInit {
   public totalItem: number=0;
   public searchterm:string='';
-  wishlistArray: WishListAPI[]=[];
 constructor(private cartService: CartService,private wishlistCartService:WishlistCartService) { }
 
 ngOnInit(): void {
