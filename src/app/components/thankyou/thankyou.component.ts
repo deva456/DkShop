@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IBillingDetails } from 'src/app/billingDetails';
+import { IBillingDetails } from 'src/app/billing-details';
 import { IProduct } from 'src/app/iproduct';
 import { BillingDetailsService } from 'src/app/services/billing-details.service';
 import { CartService } from 'src/app/services/cart.service';

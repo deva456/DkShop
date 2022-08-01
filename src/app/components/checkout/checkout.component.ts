@@ -1,75 +1,97 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import {  FormBuilder, FormControl,FormGroup,NgForm,Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { IBillingDetails } from 'src/app/billingDetails';
-import { BillingDetailsService } from 'src/app/services/billing-details.service';
+import { iCustomer } from 'src/app/icustomer';
+
 import { CartService } from 'src/app/services/cart.service';
-import{FormGroup} from '@angular/forms'
+import { CheckoutService } from 'src/app/services/checkout.service';
+
+import { IProduct } from 'src/app/iproduct';
+
+
+
 declare var Razorpay:any;
+
+@Inject(CheckoutService)
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  formValue !: FormGroup;
+  checkoutData !: any;
+  actionBtn : string = "Save";
 
-exForm!:FormGroup;
+  
+   firstname:FormControl = new FormControl();
+   lastname:FormControl = new FormControl();
+   address:FormControl = new FormControl();
+   city:FormControl = new FormControl();
+   state:FormControl = new FormControl();
+   postcode:FormControl = new FormControl();
+   mobileno:FormControl = new FormControl();
+   emailaddress:FormControl = new FormControl();
+   ordernotes:FormControl = new FormControl();
+
+   
+   customerForm = new FormGroup({
+
+    firstname : new FormControl(""),
+    lastname : new FormControl(""),
+    address : new FormControl(""),
+    city: new FormControl(""),
+    state : new FormControl(""),
+    postcode : new FormControl(""),
+    mobileno : new FormControl(""),
+    emailaddress : new FormControl(""),
+    ordernotes : new FormControl(""),
+
+
+  })
+
   public product:any=[];
   public grandTotal!:number;
   public totalItem: number=0;
+  public titlename:IProduct[]=[];
+  billingdetails!:iCustomer[];
   public shopedmore:boolean=false;
-  public discount:boolean=false;
-  public showDefault:boolean=false;
+  checkoutForm: FormGroup;
+  submitted = false;
+  checkoutInfoService: any;
+  BillingDetailService: any;
+  
+ 
+ 
+ 
+ 
 
-  constructor(private cartService: CartService,private toastr:ToastrService, private BillingService:BillingDetailsService ) { }
-  FirstName:FormControl = new FormControl("");
 
-  LastName:FormControl = new FormControl("");
-
-  Address:FormControl = new FormControl("");
-
-  City:FormControl = new FormControl("");
-
-  State:FormControl = new FormControl("");
-
-  Postcode:FormControl = new FormControl("");
-
-  MobileNo:FormControl = new FormControl("");
-
-  EmailAddress:FormControl = new FormControl("");
-
-  OrderNotes:FormControl = new FormControl("");
-
-  save(){
-
-    let Billing:IBillingDetails = {
-
-      FirstName:this.FirstName.value,
-
-      LastName:this.LastName.value,
-
-      Address:this.Address.value,
-
-      City:this.City.value,
-
-      State:this.State.value,
-
-      Postcode:parseInt(this.Postcode.value),
-
-      MobileNo:this.MobileNo.value,
-
-      EmailAddress:this.EmailAddress.value,
-
-      OrderNotes:this.OrderNotes.value
-
-    };
-
-    this.BillingService.addProduct(Billing);
-
+  constructor(private cartService: CartService,private toastr:ToastrService , private checkoutservice:CheckoutService,
+    private formBuilder: FormBuilder,
+    private http: HttpClient) 
+  { 
+     
+    this.checkoutForm=this.formBuilder.group({
+      firstname: ["",Validators.required],
+      lastname:["",Validators.required],
+      address:["",Validators.required],
+      city:["",Validators.required],
+      state:["",Validators.required], 
+      postcode:["",Validators.required],
+      mobileno:["",Validators.required],
+      emailaddress:["",[Validators.required,Validators.email]],
+      ordernotes:["",Validators.required],
+      
+    })
+    
+  
+   
   }
+  get f() { return this.checkoutForm.controls; }
 
-
-  ngOnInit(): void {
+  ngOnInit():void{
 
     this.cartService.getProducts()
     .subscribe(res=>{
@@ -80,28 +102,30 @@ exForm!:FormGroup;
     .subscribe(res=>{
     this.totalItem = res.length;
   })
-  //if else condition for shipping charges and
+  
+  this.cartService.getProducts()  
+  .subscribe(res=>{
+    this.product=res;
+  })
+ 
+  this.checkoutservice.getAllCustomers().subscribe(data=> this.billingdetails = data);
+  
   if(this.grandTotal>5000){
   this.shopedmore=true;
-  this.discount=true;
   this.toastr.success('Free shipping specially for you','Wohhoo!',{
 positionClass:'toast-top-full-width'
   });
   }
-  else if(this.grandTotal>=1){
-this.shopedmore=false;
-this.discount=true;
-  }
-  else if(this.grandTotal==0){
-    this.shopedmore=false;
-    this.discount=false;
-      }
   else{
     this.toastr.info(`₹100 has been charged to you`,`Shop more than 5000`,{
       positionClass: 'toast-top-full-width',
       timeOut:2000
     })
   }
+
+  
+
+
 }
 
 //razorpay payment integration
@@ -113,7 +137,7 @@ title1 = 'razorpay-intergration';
 options = {
   "key": "rzp_test_KMuAYKn5Hl8vDL",
   "amount": this.grandTotal,
-  "name": "Bhanu Bediya",
+  "name": "Devashish Kapadnis",
   "description": "Payment Details",
   "order_id": "",
   "handler": function (response: any) {
@@ -140,22 +164,23 @@ options = {
 };
 
 
+    
+
+  
+
+
 paynow() {
   this.paymentId = '';
   this.error = '';
-  if(this.grandTotal>5000){
-  this.options.amount = this.grandTotal*100-100000;
+  if(this.grandTotal<5000){
+  this.options.amount = this.grandTotal*100+10000;
   }
-  else if(this.grandTotal>=1){
-    this.options.amount = this.grandTotal*100+10000;
-    }
-    else if(this.grandTotal==0){
-      this.options.amount = this.grandTotal*100;//paise
-      }
-
-  this.options.prefill.name = "bhanu";
-  this.options.prefill.email = "bhanubediya@gmail.com";
-  this.options.prefill.contact = "9082356825";
+  else{
+    this.options.amount = this.grandTotal*100;
+  }//paise
+  this.options.prefill.name = "deva";
+  this.options.prefill.email = "devashishkapadnis075@gmail.com";
+  this.options.prefill.contact = "7058204270-";
   var rzp1 = new Razorpay(this.options);
   rzp1.open();
   rzp1.on('payment.failed', function (response: any) {
@@ -171,19 +196,73 @@ paynow() {
     //this.error = response.error.reason;
   }
   );
+
+  
 }
+
 @HostListener('window:payment.success', ['$event'])
 onPaymentSuccess(event: any): void {
   this.message = "Success Payment";
 }
 
-submit(post:any){
-  console.log("submitted form successfully!")
+saveData(){
+  let customer:iCustomer = {
+    firstname: this.firstname.value,
+    lastname: this.lastname.value,
+    address: this.address.value,
+    city: this.city.value,
+    state: this.state.value,
+    postcode: parseInt(this.postcode.value),
+    mobileno: this.mobileno.value,
+    emailaddress: this.emailaddress.value,
+    ordernotes: this.ordernotes.value,
+   
+    
+  };
+  console.log(customer);
+  this.checkoutservice.addCustomer(customer);
+  alert("Customer added succesfully");
+  //this.checkoutInfoService.getData();
+
+
+
+  
 }
 
 
+
+onSubmit(){
+  console.log(this.checkoutForm);
+
+  // if(this.checkoutForm.valid){
+  //   console.log(this.checkoutForm.value);
+  // }
+
+  // onSubmit(form:NgForm){
+  //   this.service.addCustomers(
+  //     (     res: any) => {
+
+  //    },
+  //     (     err: any)=>console.log(err);
+  //   );
+
+    
+     
+    
+    
+    
+  }
+
 }
 
+//onCheckout(product:iCustomer){
+//  this.service.addCustomers(product)
+//  }
+
+
+
+
+  
 
 
 
